@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const bot =new Discord.Client();
 
 const token = 'BOT TOKEN HERE';
-//You only need to put the "BOT TOKEN"
+
+
 bot.on('ready', () =>{
     console.log('The bot is online!');
 })
@@ -42,6 +43,12 @@ bot.on('message', msg =>{
 bot.on('message', msg =>{
     if(msg.content === ".yt"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
+    }
+})
+
+bot.on('message', msg =>{
+    if(msg.content === ".8ball"){
+       msg.reply('I can see you tomorrow you going to have good day ;)');
     }
 })
 

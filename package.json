@@ -1,15 +1,15 @@
 {
-"name": "discord-bot",
-"version": "1.0.0",
-"description": "hi :)",
-"main": "index.js",
-"scripts": {
-  "start": "node index.js"
-},
-"author": "Ban#4079",
-"license": "ISC",
-"dependencies": {
-  "discord.js": "^12.4.1",
-  "node-fetch": "^2.6.1"
-}
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "hi :)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ban#4079",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "node-fetch": "^2.6.1"
+  }
 }
