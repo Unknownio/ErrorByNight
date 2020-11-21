@@ -1,7 +1,16 @@
 const Discord = require('discord.js');
 const bot =new Discord.Client();
 
-const token = 'BOT TOKEN HERE';
+const PREFIX = '.';
+
+const token = 'BOT TOKEN';
+
+bot.on('guildMemberAdd', member =>{
+    const channel = member.guild.channels.find(channel => channel.name === 'Welcome');
+    if(!channel) return;
+
+    channel.send('Welcome to my Server, $(member), please read the rules in the rules channel')
+});
 
 
 bot.on('ready', () =>{
@@ -48,8 +57,9 @@ bot.on('message', msg =>{
 
 bot.on('message', msg =>{
     if(msg.content === ".8ball"){
-       msg.reply('I can see you tomorrow you going to have good day ;)');
+       msg.reply('I can see you going to have good day ;)');
     }
 })
+
 
 bot.login(token);
