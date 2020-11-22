@@ -9,7 +9,7 @@
   "author": "Ban#4079",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.4.1",
+    "discord.js": "^12.5.0",
     "node-fetch": "^2.6.1"
   }
 }
