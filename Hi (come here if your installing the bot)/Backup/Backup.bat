@@ -1,3 +1,3 @@
 @echo off
-Xcopy "C:\Users\Acer\Desktop\Discord bot - Copy"
+Xcopy "C:\Users\ FILL THIS SPOT \Desktop\Discord bot"
 PAUSE
