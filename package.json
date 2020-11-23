@@ -1,14 +1,27 @@
 {
-  "name": "discord-bot",
+  "name": "Yoda",
   "version": "1.0.10",
-  "description": "hi :)",
+  "description": ":0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ban#4079",
+  
+  "keywords": [
+    "discord",
+    "bot",
+    "image",
+    "random",
+    "folder"
+  ],
+  "author": "Yoda#4079",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaketanda/Random-Image-Folder-to-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/Unknownio/SimpleBot/issues",
   "dependencies": {
-    "discord.js": "^12.5.0",
-    }
+    "discord.js": "^11.4.2",
+    "fs": "0.0.1-security"
+  }
 }

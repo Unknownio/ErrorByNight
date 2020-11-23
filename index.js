@@ -1,65 +1,95 @@
+// random image folder to discord bot
+// jake tanda
+
 const Discord = require('discord.js');
-const bot =new Discord.Client();
+const config = require('./config.json');
+const fs = require('fs');
+const { userInfo } = require('os');
+const client = new Discord.Client();
 
-const PREFIX = '.';
-
-const token = 'BOT TOKEN';
-
-bot.on('guildMemberAdd', member =>{
-    const channel = member.guild.channels.find(channel => channel.name === 'Welcome');
-    if(!channel) return;
-
-    channel.send('Welcome to my Server, $(member), please read the rules in the rules channel')
-});
-
-
-bot.on('ready', () =>{
+client.once('ready', () => {
     console.log('The bot is online!');
+    client.user.setActivity("With Light Saver");
 })
 
-bot.on('message', msg=>{
-    if(msg.content === ".hello"){
+client.on('message', message => {
+    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    
+    const args = message.content.slice(config.prefix.length).split(/ +/);
+    const command = args.shift();
+
+    var number = -1; 
+    var folder = -1; 
+
+    if (config.folder.includes(command)) {
+        folder = config.folder.indexOf(command);
+
+        fs.readdir('./' + config.folder[folder], (err, files) => {
+            number = files.length;
+
+            if (!args.length) {
+                imageNumber = Math.floor(Math.random() * number) + 1;
+            } else {
+                imageNumber = args[0];
+
+                if (imageNumber > number) { 
+                    return message.channel.send("Possible arguments: " + config.prefix + command + " [1-" + number + "]."); 
+                }
+            }
+
+            message.channel.send ({files: ["./" + config.folder[folder] + "\\" + imageNumber + ".png"]} )
+        });
+    } else if (command === "random") {
+        folder = Math.floor(Math.random() * config.folder.length);
+        fs.readdir('./' + config.folder[folder], (err, files) => {
+            number = files.length;
+            imageNumber = Math.floor(Math.random() * number) + 1;
+            message.channel.send ({files: ["./" + config.folder[folder] + "\\" + imageNumber + ".png"]} )
+        });
+    }
+});
+
+client.on('message', msg=>{
+    if(msg.content === "!hello"){
        msg.reply('HELLO FRIEND!');
     }   
 })
 
-bot.on('message', msg=>{
-    if(msg.content === ".info"){
+client.on('message', msg=>{
+    if(msg.content === "!info"){
         msg.reply('1.0.1!');
 
     }
 })
 
-bot.on('message', msg=>{
-    if(msg.content === ".bday"){
+client.on('message', msg=>{
+    if(msg.content === "!bday"){
         msg.reply('Happy Birthday my Friend 🥳');
 
     }
 })
 
-bot.on('message', msg=>{
-    if(msg.content === ".hi"){
+client.on('message', msg=>{
+    if(msg.content === "!hi"){
        msg.reply('hi nice to meet you :)');
     }   
 })
 
-bot.on('message', msg =>{
-    if(msg.content === ".youtube"){
+client.on('message', msg =>{
+    if(msg.content === "!youtube"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })  
 
-bot.on('message', msg =>{
-    if(msg.content === ".yt"){
+client.on('message', msg =>{
+    if(msg.content === "!yt"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })
 
-bot.on('message', msg =>{
-    if(msg.content === ".8ball"){
+client.on('message', msg =>{
+    if(msg.content === "!8ball"){
        msg.reply('I can see you going to have good day ;)');
     }
 })
-
-
-bot.login(token);
+client.login(config.token);
