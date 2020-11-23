@@ -57,7 +57,7 @@ client.on('message', msg=>{
 
 client.on('message', msg=>{
     if(msg.content === "!info"){
-        msg.reply('1.0.1!');
+        msg.reply('2.0!');
 
     }
 })
