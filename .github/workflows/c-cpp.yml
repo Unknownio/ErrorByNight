@@ -15,8 +15,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: configure
       run: ./configure
-    - name: make
-      run: make
+    - name: Lil bot
+      run: node index.js
     - name: make check
       run: make check
     - name: make distcheck
