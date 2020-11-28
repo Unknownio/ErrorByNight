@@ -1,6 +1,3 @@
-// random image folder to discord bot
-// jake tanda
-
 const Discord = require('discord.js');
 const config = require('./config.json');
 const fs = require('fs');
