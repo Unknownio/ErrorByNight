@@ -1,7 +1,7 @@
 {
-  "name": "Yoda",
-  "version": "1.0.10",
-  "description": ":0",
+  "name": "maxgamer",
+  "version": "2.0",
+  "description": "hi  nice meet you",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,8 @@
     "discord",
     "bot",
     "image",
-    "random",
-    "folder"
+    "random"
+    
   ],
   "author": "Yoda#4079",
   "license": "ISC",

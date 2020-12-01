@@ -89,4 +89,14 @@ client.on('message', msg =>{
        msg.reply('I can see you going to have good day ;)');
     }
 })
+client.on('message', message =>{
+    
+    if(!message.content.startsWith() || message.author.bot) return;
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if(command === 'clear'){
+        client.commands.get('clear').execute(message, args);
+    }
+});
 client.login(config.token);
