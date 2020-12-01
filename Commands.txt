@@ -1,7 +1,0 @@
-!random
-!meme {0/34}
-!hi
-!hello
-!bday
-!info
-!8ball
