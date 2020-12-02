@@ -1,11 +1,25 @@
-module.express ={
+const Discord = require('discord.js');
+
+module.exports = {
     name: 'clear',
     description: "clear message",
-    execute(message, args){
-        if(!args[0]) return message.reply("please enter the amount of messages that you ment to clear!");
-        if(isNaN(args[0])) return message.reply("please enter a real number!");
+    run: async(client, message, args) => {
+        const {prefix, token} = require ('../config.json')
 
-        if(args[0] > 100) return message.reply("You canno't delete more than 100 messages!");
-        if(args[0] < 1) return message.reply("You must delete atleast one more!");
-    } 
-}
+        async function clear() {
+             message.delete();
+
+            var purge = Number(args[1])
+
+            if(isNaN(purge)) {
+                message.channel.send('Please')
+            }
+            const fetched = await message.channel.message.fetch({limit: purge});
+            console.log(fetched.size + 'messages found.');
+
+            message.channel.bulkDelete(fetched)
+            message.channel.send('I have deleted ${fetched.size}' ,messages)
+        }
+        clear();
+    }}
+    
