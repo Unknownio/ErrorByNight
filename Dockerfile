@@ -1,7 +1,7 @@
-FROM ubuntu:20.4
+FROM java.js
 
-RUN apt-get install sl
+RUN javaautobuild.java
 
-ENV PORT=8080
+ENV javac javaautobuild
 
-CMD ["echo", "Docker is easy"]
+CMD ["java", "Docker is easy"]
