@@ -1,26 +1,26 @@
 {
-  "name": "maxgamer",
-  "version": "2.0",
+  "name": "yoda",
+  "version": "2.0.0",
   "description": "hi  nice meet you",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "index.js"
   },
-  
   "keywords": [
     "discord",
     "bot",
     "image",
-    "random"
-    
+    "random",
+    "simplebot"
   ],
   "author": "Yoda#4079",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jaketanda/Random-Image-Folder-to-Discord-Bot/issues"
+    "url": "https://github.com/Unknownio/SimpleBot/issues"
   },
-  "homepage": "https://github.com/Unknownio/SimpleBot/issues",
+  "homepage": "https://github.com/Unknownio/SimpleBot",
   "dependencies": {
+    "bunyan": "^1.8.14",
     "discord.js": "^11.4.2",
     "fs": "0.0.1-security"
   }

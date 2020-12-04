@@ -4,11 +4,40 @@ const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
 
-client.once('ready', () => {
-    console.log('The bot is online!');
-    client.user.setActivity("With Light Saver");
+client.on("ready", () => {
+    client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
 })
 
+client.on('message', message => {
+    if (message.channel.type != 'text' || message.author.bot)
+      return;
+  
+    let command = message.content.split(' ')[0].slice(1);
+    let args = message.content.replace('.' + command, '').trim();
+  
+    switch (command) {
+      case 'ping': {
+        message.channel.send('Pong! (~ ' + client.ping + 'ms)');
+        break;
+      }
+  
+  
+      case 'uptime': {
+        // client.uptime is in millseconds
+        // this is just maths, I won't explain much of it
+        // % is modulo, AKA the remainder of a division
+        let days = Math.floor(client.uptime / 86400000);
+        let hours = Math.floor(client.uptime / 3600000) % 24;
+        let minutes = Math.floor(client.uptime / 60000) % 60;
+        let seconds = Math.floor(client.uptime / 1000) % 60;
+  
+        message.channel.send(`__Uptime:__\n${days}d ${hours}h ${minutes}m ${seconds}s`);
+        break;
+      }
+    }
+  });
+
+console.log('The bot is online!');
 client.on('message', message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
     
@@ -54,7 +83,7 @@ client.on('message', msg=>{
 
 client.on('message', msg=>{
     if(msg.content === "!info"){
-        msg.reply('2.0!');
+        msg.reply('2.0.0!');
 
     }
 })
@@ -89,18 +118,4 @@ client.on('message', msg =>{
        msg.reply('I can see you going to have good day ;)');
     }
 })
-client.on('message', message =>{
-    
-    if(!message.content.startsWith() || message.author.bot) return;
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    if(command === 'clear'){
-        client.commands.get('clear').execute(message, args);
-    } else if(command === 'kick'){
-        client.commands.get('kick').execute(message, args);
-    } else if(command === 'ban'){
-        client.commands.get('ban').execute(message, args);
-    }
-});
 client.login(config.token);

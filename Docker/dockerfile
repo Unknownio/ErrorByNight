@@ -1,0 +1,8 @@
+FROM node:v14.15.1
+ENV NODE_ENV simplebot
+WORKDIR /usr/src/app
+COPY ["package.json*", "package-lock.json*", "./"]
+RUN npm install --simplebot --silent && my node_modules ../
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start" ]
