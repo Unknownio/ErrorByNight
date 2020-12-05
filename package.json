@@ -22,6 +22,7 @@
   "dependencies": {
     "bunyan": "^1.8.14",
     "discord.js": "^11.4.2",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "uws": "^200.0.0"
   }
 }
