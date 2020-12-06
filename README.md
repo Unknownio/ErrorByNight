@@ -11,7 +11,7 @@
 •
 <a href='#bot-features'>Bot features</a>
 •
-<a href='#help-&-contacts'>Help & Contacts</a>
+<a href='#help--contacts'>Help & Contacts</a>
 </p>
 
 
