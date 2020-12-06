@@ -17,7 +17,7 @@
 
 ## What is K3Bot?
 K3Bot is a discord bot created by [me](https://github.com/Unknownio) and my friend using javascript.
-You can try the bot without downloading anything, just click [here](https://repl.it/join/zulovgka-gamerpubg1008) and paste your [TOKEN](https://www.writebots.com/discord-bot-token/)
+You can try the bot without downloading anything, just click [here](https://repl.it/join/zulovgka-gamerpubg1008) and just paste your [TOKEN](https://www.writebots.com/discord-bot-token/)
 
 
 
