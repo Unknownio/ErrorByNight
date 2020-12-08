@@ -33,5 +33,5 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 
 You can get support on my discord server.
 
-<a target="_blank" rel="noopener noreferrer" href='https://discord.gg/ZcJaaYU52D'>![Discord Banner 3](https://discordapp.com/api/guilds/713417725191389184/widget.png?style=banner3)</a>
+<a target="_blank" rel="noopener noreferrer" href='https://discord.gg/8PDEQqsG5b'>![Discord Banner 3](https://discordapp.com/api/guilds/713417725191389184/widget.png?style=banner3)</a>
 
