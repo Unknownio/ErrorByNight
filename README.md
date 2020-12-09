@@ -25,23 +25,15 @@ You can try the bot without downloading anything, just click [here](https://repl
 ## Bot features
 My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands coming soon.
 
-|Commands    |What the command do? |
-|------------|---------------------|
-<<<<<<< HEAD
-|Ban| Ban people |
-|kick|it can kick people|
-|poll|check the commands folder|
-=======
-|Command name| Command description |
->>>>>>> f19590cb75df1a16d684030c96bb32712d658d63
+|Commands    | What the command do? |
+|------------|--------------------- |
+|Ban         | Ban users            |
+|kick        | Kick users           |
+|poll        | Check the commands folder     |
+|Command name| Command description  |
 
 ## Help & Contacts
 
 You can get support on my discord server.
 
-<<<<<<< HEAD
-<a target="_blank" rel="noopener noreferrer" href='https://discord.gg/ZcJaaYU52D'>![Discord Banner 3](https://discordapp.com/api/guilds/713417725191389184/widget.png?style=banner3)</a>
-=======
 <a target="_blank" rel="noopener noreferrer" href='https://discord.gg/8PDEQqsG5b'>![Discord Banner 3](https://discordapp.com/api/guilds/713417725191389184/widget.png?style=banner3)</a>
->>>>>>> f19590cb75df1a16d684030c96bb32712d658d63
-
