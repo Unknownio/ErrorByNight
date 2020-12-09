@@ -29,7 +29,7 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 |------------|--------------------- |
 |Ban         | Ban users            |
 |kick        | Kick users           |
-|poll        | Check the commands folder     |
+|poll        | ```empty```  |
 |Command name| Command description  |
 
 ## Help & Contacts
