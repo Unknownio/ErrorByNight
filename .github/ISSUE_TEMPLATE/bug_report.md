@@ -12,9 +12,9 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+1. Go to 'Github'
+2. Click on 'My repository and go issue'
+3. And make New issue 'describe the problem'
 4. See error
 
 **Expected behavior**
