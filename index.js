@@ -53,38 +53,24 @@ client.on("message", message => {
   });
 
   client.on("ready", () => {
-    client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
+	 client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
 })
 
-client.on('message', message => {
-    if (message.channel.type != 'text' || message.author.bot)
-      return;
-  
-    let command = message.content.split(' ')[0].slice(1);
-    let args = message.content.replace('.' + command, '').trim();
-  
-    switch (command) {
-		case 'ping': {
-		  message.channel.send('Pong! (~ ' + client.ping + 'ms)');
-		  break;
-		}
-  
-  
-      case 'uptime': {
-        // client.uptime is in millseconds
-        // this is just maths, I won't explain much of it
-        // % is modulo, AKA the remainder of a division
-        let days = Math.floor(client.uptime / 86400000);
-        let hours = Math.floor(client.uptime / 3600000) % 24;
-        let minutes = Math.floor(client.uptime / 60000) % 60;
-        let seconds = Math.floor(client.uptime / 1000) % 60;
-  
-        message.channel.send(`__Uptime:__\n${days}d ${hours}h ${minutes}m ${seconds}s`);
-        break;
-      }
-    }
-  });
+  const prefix = ".";
 
+  client.on("message", function(message) {
+    if (message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
+  
+    const commandBody = message.content.slice(prefix.length);
+    const args = commandBody.split(' ');
+    const command = args.shift().toLowerCase();
+    if (command === "ping") {
+        const timeTaken = Date.now() - message.createdTimestamp;
+        message.reply(`Pong! This message had a latency of ${timeTaken}ms.`); 
+    }
+    });
+         
 console.log('The bot is online!');
 client.on('message', message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
