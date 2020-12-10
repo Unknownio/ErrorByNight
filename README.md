@@ -15,9 +15,7 @@
 <a href='#help--contacts'>Help & Contacts</a>
 </p>
 
-## What is K3Bot?
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd509a54b82d498f89223bd6efb8d7fc)](https://app.codacy.com/gh/Unknownio/SimpleBot?utm_source=github.com&utm_medium=referral&utm_content=Unknownio/SimpleBot&utm_campaign=Badge_Grade_Settings)
+## What is K3Bot
 
 K3Bot is a discord bot created by [me](https://github.com/Unknownio) and my friend using javascript.
 You can try the bot without downloading anything, just click [here](https://repl.it/join/zulovgka-gamerpubg1008) and just paste your [TOKEN](https://www.writebots.com/discord-bot-token/)
