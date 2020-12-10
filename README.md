@@ -25,7 +25,6 @@ You can try the bot without downloading anything, just click [here](https://repl
 
 
 
-
 ## Bot features
 My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands coming soon.
 
