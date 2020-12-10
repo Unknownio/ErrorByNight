@@ -6,7 +6,6 @@ const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
 
-
 // command Ban (prefix = '.')
 client.on("message", message => {
 	if (!message.guild) return;
@@ -65,10 +64,10 @@ client.on('message', message => {
     let args = message.content.replace('.' + command, '').trim();
   
     switch (command) {
-      case 'ping': {
-        message.channel.send('Pong! (~ ' + client.ping + 'ms)');
-        break;
-      }
+		case 'ping': {
+		  message.channel.send('Pong! (~ ' + client.ping + 'ms)');
+		  break;
+		}
   
   
       case 'uptime': {
