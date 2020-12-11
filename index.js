@@ -28,11 +28,6 @@ client.on("message", message => {
 	  }
 	}
   });
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 210bb6ad0d0dfea67a271949566aa825ed4c92b5
 //command Kick
 client.on("message", message => {
 	if (!message.guild) return;

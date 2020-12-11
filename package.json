@@ -24,11 +24,8 @@
   "dependencies": {
     "EventEmitter": "^1.0.0",
     "bunyan": "^1.8.14",
-<<<<<<< HEAD
-=======
     "discord-giveaway": "^1.1.2",
     "discord-giveaways": "^4.2.1",
->>>>>>> 210bb6ad0d0dfea67a271949566aa825ed4c92b5
     "discord.js": "^12.5.1",
     "fs": "0.0.1-security",
     "uws": "^200.0.0"
