@@ -1,4 +1,4 @@
 @echo off 
 echo "Starting"
-node index.js
+node .
 PAUSE

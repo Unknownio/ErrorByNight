@@ -1,3 +1,4 @@
+//This Project Was Made By : Unknownio
 const Discord = require('discord.js');
 const config = require('./config.json');
 const private = require('./private.js');
@@ -5,39 +6,75 @@ const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
 
-client.on("ready", () => {
-    client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
-})
+// command Ban (prefix = '.')
+client.on("message", message => {
+	if (!message.guild) return;
+	if (message.content.startsWith(".ban")) {
+	  const user = message.mentions.users.first();
+	  if (user) {
+		const member = message.guild.member(user);
+		  if (member) {
+			member.ban({ reason: "Optional reason that will display in the audit logs" }).then(() => {
+			  message.reply(`Successfully banned ${user.tag}.`);
+			}).catch(err => {
+			  message.reply("I was unable to ban the member");
+			  console.error(err);
+			});
+		  } else {
+			message.reply("That user isn't in this guild!");
+		  }
+	  } else {
+		message.reply("You didn't mention the user to ban!");
+	  }
+	}
+  });
+<<<<<<< HEAD
+  
+=======
 
-client.on('message', message => {
-    if (message.channel.type != 'text' || message.author.bot)
-      return;
-  
-    let command = message.content.split(' ')[0].slice(1);
-    let args = message.content.replace('.' + command, '').trim();
-  
-    switch (command) {
-      case 'ping': {
-        message.channel.send('Pong! (~ ' + client.ping + 'ms)');
-        break;
-      }
-  
-  
-      case 'uptime': {
-        // client.uptime is in millseconds
-        // this is just maths, I won't explain much of it
-        // % is modulo, AKA the remainder of a division
-        let days = Math.floor(client.uptime / 86400000);
-        let hours = Math.floor(client.uptime / 3600000) % 24;
-        let minutes = Math.floor(client.uptime / 60000) % 60;
-        let seconds = Math.floor(client.uptime / 1000) % 60;
-  
-        message.channel.send(`__Uptime:__\n${days}d ${hours}h ${minutes}m ${seconds}s`);
-        break;
-      }
-    }
+>>>>>>> 210bb6ad0d0dfea67a271949566aa825ed4c92b5
+//command Kick
+client.on("message", message => {
+	if (!message.guild) return;
+	if (message.content.startsWith(".kick")) {
+	  const user = message.mentions.users.first();
+	  if (user) {
+		const member = message.guild.member(user);
+		  if (member) {
+			member.kick("Optional reason that will display in the audit logs").then(() => {
+			  message.reply(`Successfully kicked ${user.tag}.`);
+			}).catch(err => {
+			  message.reply("I was unable to kick the member");
+			  console.error(err);
+			});
+		  } else {
+			message.reply("That user isn't in this guild!");
+		  }
+	  } else {
+		message.reply("You didn't mention the user to kick!");
+	  }
+	}
   });
 
+  client.on("ready", () => {
+	 client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
+})
+
+  const prefix = ".";
+
+  client.on("message", function(message) {
+    if (message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
+  
+    const commandBody = message.content.slice(prefix.length);
+    const args = commandBody.split(' ');
+    const command = args.shift().toLowerCase();
+    if (command === "ping") {
+        const timeTaken = Date.now() - message.createdTimestamp;
+        message.reply(`Pong! This message had a latency of ${timeTaken}ms.`); 
+    }
+    });
+         
 console.log('The bot is online!');
 client.on('message', message => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
@@ -123,7 +160,7 @@ client.on('message', msg =>{
 const defaults = {
 	timeout: 30,
 	color: 2555834,
-	triggers: {newPoll: '!newpoll', vote: '!vote', results: '!results'},
+	triggers: {newPoll: '.newpoll', vote: '.vote', results: '.results'},
 	appName: 'Votemaster'
 };
 var pollIndex = 0, polls = new Map();
@@ -223,7 +260,7 @@ class Poll {
 				return {
 					success: true,
 					reason: '',
-					message: `Great, I changed your vote to "${this.choices.get(key).name}"!`
+					message: `Great, I changed your vote to "${this.choices.get(key).name}".`
 				};
 
 			} else {
@@ -239,7 +276,7 @@ class Poll {
 				return {
 					success: true,
 					reason: '',
-					message: `Great, I logged your vote for "${this.choices.get(key).name}"!`
+					message: `Great, I logged your vote for "${this.choices.get(key).name}".`
 				};
 			}
 		} else {
@@ -276,7 +313,7 @@ function generateDiscordEmbed(poll, type) {
 		case 'poll':
 			embed = {
 				title: `Poll ${poll.id}: ${poll.name}`,
-				description: `To vote, reply with\`!vote choice\` within the next ${poll.timeout} minutes. For example, "!vote ${poll.choices.keys().next().value}". If multiple polls are open, you\'ll have to specify which one using its number and a pound sign: \`!vote #${poll.id} choice\`.`,
+				description: `To vote, reply with\`.vote choice\` within the next ${poll.timeout} minutes. For example, ".vote ${poll.choices.keys().next().value}". If multiple polls are open, you\'ll have to specify which one using its number and a pound sign: \`.vote #${poll.id} choice\`.`,
 				color: poll.color,
 				timestamp: poll.timeCreated,
 				footer: {
@@ -358,7 +395,8 @@ client.on('message', message => {
 				args[0].charAt(args[0].length - 1) === '"' &&
 				args[1].charAt(0) === '[' &&
 				args[1].charAt(args[1].length - 1) === ']'
-			) {
+			) 
+			{
 				
 				// Title of the poll, without quotes
 				var title = args.shift().slice(1,-1);
@@ -479,7 +517,7 @@ client.on('message', message => {
 					voteResponse = polls.get(activePollsInServer[0]).vote(args[0].toLowerCase(), message.author).message;
 				} else {
 					// TODO dynamic examples
-					voteResponse = 'Sorry, I don\'t know which poll to vote on. Please specify the poll id number using a pound sign and a number (ie \'!vote #1 A\') before your vote.';
+					voteResponse = 'Sorry, I don\'t know which poll to vote on. Please specify the poll id number using a pound sign and a number (ie \'.vote #1 A\') before your vote.';
 				}
 
 			} else {
@@ -490,7 +528,7 @@ client.on('message', message => {
 					voteResponse = polls.get(pollID).vote(args[1].toLowerCase(), message.author).message;
 				} else {
 					// TODO dynamic examples
-					voteResponse = 'Sorry, that\'s not a valid poll to vote on. Please specify the poll id number (ie \'!vote #1 A\') before your vote.';
+					voteResponse = 'Sorry, that\'s not a valid poll to vote on. Please specify the poll id number (ie \'.vote #1 A\') before your vote.';
 				}
 	 		}
 
