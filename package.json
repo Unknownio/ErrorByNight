@@ -11,9 +11,7 @@
     "bot",
     "image",
     "random",
-    "simplebot",
-    "discord.js"
-
+    "simplebot"
   ],
   "author": "Yoda#4079",
   "license": "ISC",
@@ -24,10 +22,12 @@
   "dependencies": {
     "EventEmitter": "^1.0.0",
     "bunyan": "^1.8.14",
-    "discord-giveaway": "^1.1.2",
-    "discord-giveaways": "^4.2.1",
+    "discord-player": "^3.0.3",
     "discord.js": "^12.5.1",
     "fs": "0.0.1-security",
-    "uws": "^200.0.0"
+    "uws": "^200.0.0",
+    "ws": "^7.4.1",
+    "@discordjs/opus": "^0.3.2",
+    "ffmpeg-static": "^4.2.7"
   }
 }

@@ -5,7 +5,92 @@ const private = require('./private.js');
 const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
+const command = require('./command')
 
+const { Player } = require('discord-player');
+
+client.player = new Player(client);
+client.config = require('./config/bot.json');
+client.emotes = require('./config/emojis.json');
+client.filters = require('./config/filters.json');
+client.commands = new Discord.Collection();
+
+const core = fs.readdirSync('./commands/core').filter(file => file.endsWith('.js'));
+const infos = fs.readdirSync('./commands/infos').filter(file => file.endsWith('.js'));
+const music = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
+
+for (const file of core) {
+    console.log(`Loading command ${file}`);
+    const command = require(`./commands/core/${file}`);
+    client.commands.set(command.name.toLowerCase(), command);
+};
+
+for (const file of infos) {
+    console.log(`Loading command ${file}`);
+    const command = require(`./commands/infos/${file}`);
+    client.commands.set(command.name.toLowerCase(), command);
+};
+
+for (const file of music) {
+    console.log(`Loading command ${file}`);
+    const command = require(`./commands/music/${file}`);
+    client.commands.set(command.name.toLowerCase(), command);
+};
+
+const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+const player = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
+
+for (const file of events) {
+    console.log(`Loading discord.js event ${file}`);
+    const event = require(`./events/${file}`);
+    client.on(file.split(".")[0], event.bind(null, client));
+};
+
+for (const file of player) {
+    console.log(`Loading discord-player event ${file}`);
+    const event = require(`./player/${file}`);
+    client.player.on(file.split(".")[0], event.bind(null, client));
+};
+
+
+command(client, 'embed', (message) => {
+	const logo =
+	'https://i.pinimg.com/originals/97/86/3f/97863fa60e767e55d8d62e392a020d67.jpg'
+
+    const embed = new Discord.MessageEmbed()
+      .setTitle('My Youtube channel')
+      .setURL('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber')
+      .setAuthor(message.author.username)
+      .setImage(logo)
+      .setThumbnail(logo)
+      .setFooter('Weeb')
+      .setColor('F74D03')
+      .addFields(
+        {
+          name: 'Ban',
+          value: 'ban people',
+          inline: true,
+        },
+        {
+          name: 'Kick',
+          value: 'kick people',
+          inline: true,
+        },
+        {
+          name: 'newpoll',
+          value: 'make vote',
+          inline: true,
+		},
+		{
+			name: 'Ownwer',
+			value: 'YodaX#4079',
+		  }
+		)
+
+		message.channel.send(embed)
+	})
+
+   
 // command Ban (prefix = '.')
 client.on("message", message => {
 	if (!message.guild) return;
@@ -28,7 +113,8 @@ client.on("message", message => {
 	  }
 	}
   });
-//command Kick
+
+  //command Kick
 client.on("message", message => {
 	if (!message.guild) return;
 	if (message.content.startsWith(".kick")) {
@@ -109,45 +195,45 @@ client.on('message', message => {
 });
 
 client.on('message', msg=>{
-    if(msg.content === "!hello"){
+    if(msg.content === ".hello"){
        msg.reply('HELLO FRIEND!');
     }   
 })
 
 client.on('message', msg=>{
-    if(msg.content === "!info"){
+    if(msg.content === ".info"){
         msg.reply('2.0.0!');
 
     }
 })
 
 client.on('message', msg=>{
-    if(msg.content === "!bday"){
+    if(msg.content === ".bday"){
         msg.reply('Happy Birthday my Friend 🥳');
 
     }
 })
 
 client.on('message', msg=>{
-    if(msg.content === "!hi"){
+    if(msg.content === ".hi"){
        msg.reply('hi nice to meet you :)');
     }   
 })
 
 client.on('message', msg =>{
-    if(msg.content === "!youtube"){
+    if(msg.content === ".youtube"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })  
 
 client.on('message', msg =>{
-    if(msg.content === "!yt"){
+    if(msg.content === ".yt"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })
 
 client.on('message', msg =>{
-    if(msg.content === "!8ball"){
+    if(msg.content === ".8ball"){
        msg.reply('I can see you going to have good day ;)');
     }
 })
