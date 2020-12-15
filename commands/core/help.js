@@ -43,6 +43,6 @@ module.exports = {
                     description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
                 }
             });
-        };
+        }
     },
 };
