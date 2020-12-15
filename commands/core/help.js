@@ -17,7 +17,7 @@ module.exports = {
                     fields: [
                         { name: 'Bot', value: infos },
                         { name: 'Music', value: music },
-                        { name: 'Filters', value: '`bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`' },
+                        
                     ],
                     timestamp: new Date(),
                     description: `To use filters, ${client.config.prefix}filter (the filter). Example : ${client.config.prefix}filter 8D.`,

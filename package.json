@@ -20,14 +20,15 @@
   },
   "homepage": "https://github.com/Unknownio/SimpleBot",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "EventEmitter": "^1.0.0",
     "bunyan": "^1.8.14",
     "discord-player": "^3.0.3",
     "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.2.7",
     "fs": "0.0.1-security",
     "uws": "^200.0.0",
     "ws": "^7.4.1",
-    "@discordjs/opus": "^0.3.2",
-    "ffmpeg-static": "^4.2.7"
+    "ytdl-core": "^4.1.5"
   }
 }

@@ -12,7 +12,6 @@ const { Player } = require('discord-player');
 client.player = new Player(client);
 client.config = require('./config/bot.json');
 client.emotes = require('./config/emojis.json');
-client.filters = require('./config/filters.json');
 client.commands = new Discord.Collection();
 
 const core = fs.readdirSync('./commands/core').filter(file => file.endsWith('.js'));
