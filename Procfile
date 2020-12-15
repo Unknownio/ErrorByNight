@@ -1,1 +1,1 @@
-worker: npm run
+web: node ./index.js
