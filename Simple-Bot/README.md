@@ -14,16 +14,16 @@
 <a href='#help--contacts'>Help & Contacts</a>
 </p>
 
-## How to install the bot!
-1. First go to the folder `Hi (come here if your installing the bot)`
-2.then open the folder `Node.js` and install that 
-
 ## What is K3Bot
 
 K3Bot is a discord bot created by [me](https://github.com/Unknownio) and my friend using javascript.
 You can try the bot without downloading anything, just click [here](https://repl.it/join/zulovgka-gamerpubg1008) and just paste your [TOKEN](https://www.writebots.com/discord-bot-token/)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/34e8ab04941d41099293ebc558d94257)](https://www.codacy.com/gh/Unknownio/SimpleBot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Unknownio/SimpleBot&amp;utm_campaign=Badge_Grade)
+
+## How to install the bot!
+1. First go to the folder `Hi (come here if your installing the bot)`
+2.then open the folder `Node.js` and install that 
 
 ## Bot features
 My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands coming soon.
