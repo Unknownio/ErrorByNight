@@ -1,11 +1,12 @@
 //This Project Was Made By : Unknownio
 const Discord = require('discord.js');
 const config = require('./config.json');
-const private = require('./private.js');
 const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
 const command = require('./command')
+
+const prefix = ".";
 
 const { Player } = require('discord-player');
 
@@ -139,8 +140,6 @@ client.on("message", message => {
   client.on("ready", () => {
 	 client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
 })
-
-  const prefix = ".";
 
   client.on("message", function(message) {
     if (message.author.bot) return;
