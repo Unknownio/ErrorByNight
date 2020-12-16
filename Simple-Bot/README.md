@@ -14,6 +14,10 @@
 <a href='#help--contacts'>Help & Contacts</a>
 </p>
 
+## How to install the bot!
+1. First go to the folder `Hi (come here if your installing the bot)`
+2.then open the folder `Node.js` and install that 
+
 ## What is K3Bot
 
 K3Bot is a discord bot created by [me](https://github.com/Unknownio) and my friend using javascript.
@@ -28,7 +32,7 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 |-------------|--------------------- |
 | Ban         | Ban users            |
 | Kick        | Kick users           |
-| Poll        | ```empty```          |
+| Poll        | Make a Vote          |
 | Command name| Command description  |
 
 ## Help & Contacts
