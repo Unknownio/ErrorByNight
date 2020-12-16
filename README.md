@@ -19,6 +19,7 @@
 K3Bot is a discord bot created by [me](https://github.com/Unknownio) and my friend using javascript.
 You can try the bot without downloading anything, just click [here](https://repl.it/join/zulovgka-gamerpubg1008) and just paste your [TOKEN](https://www.writebots.com/discord-bot-token/)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd509a54b82d498f89223bd6efb8d7fc)](https://app.codacy.com/gh/Unknownio/ErrorByNight?utm_source=github.com&utm_medium=referral&utm_content=Unknownio/ErrorByNight&utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/34e8ab04941d41099293ebc558d94257)](https://www.codacy.com/gh/Unknownio/SimpleBot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Unknownio/SimpleBot&amp;utm_campaign=Badge_Grade)
 
 ## Bot features
