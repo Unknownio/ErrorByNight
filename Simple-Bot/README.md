@@ -22,7 +22,7 @@ You can try the bot without downloading anything, just click [here](https://repl
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/34e8ab04941d41099293ebc558d94257)](https://www.codacy.com/gh/Unknownio/ErrorByNight/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Unknownio/ErrorByNight&amp;utm_campaign=Badge_Grade)
 
 ## How to install the bot
-1. First go to the folder `Hi (come here if your installing the bot)`
+1.First go to the folder `Hi (come here if your installing the bot)`.
 2.then open the folder `Node.js` and install that 
 
 ## Bot features
