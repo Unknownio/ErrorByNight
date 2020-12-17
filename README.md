@@ -1,12 +1,6 @@
 <h1 align="center"><b>ErrorByNight</b></h1>
 
 <p align="center">
-  <a href='LICENSE'><img src='https://raster.shields.io/badge/License-AGPL3.0%20LIcense-16c60c.svg?style=for-the-badge'></a>
-  <a href='https://github.com/Unknownio/SimpleBot/releases'><img src='https://raster.shields.io/badge/Project-Releases-red.svg?style=for-the-badge'></a>
-  <a href='#'><img src='https://raster.shields.io/badge/Language-JS-orange.svg?style=for-the-badge'></a>
-</p>
-
-<p align="center">
 <a href='#help--contacts'>Help & Contacts</a>
 </p>
 
