@@ -7,10 +7,6 @@
 </p>
 
 <p align="center">
-<a href='#what-is-k3bot'>What is K3Bot</a>
-•
-<a href='#bot-features'>Bot features</a>
-•
 <a href='#help--contacts'>Help & Contacts</a>
 </p>
 
