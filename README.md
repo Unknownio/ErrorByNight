@@ -1,4 +1,4 @@
-<h1 align="center"><b>K3Bot</b></h1>
+<h1 align="center"><b>ErrorByNight</b></h1>
 
 <p align="center">
   <a href='LICENSE'><img src='https://raster.shields.io/badge/License-AGPL3.0%20LIcense-16c60c.svg?style=for-the-badge'></a>
@@ -14,22 +14,11 @@
 <a href='#help--contacts'>Help & Contacts</a>
 </p>
 
-## What is K3Bot
+## Who is ErrorByNight
 
-K3Bot is a discord bot created by [me](https://github.com/Unknownio) and my friend using javascript.
-You can try the bot without downloading anything, just click [here](https://repl.it/join/zulovgka-gamerpubg1008) and just paste your [TOKEN](https://www.writebots.com/discord-bot-token/)
+ErrorByNight is a small team of programmers, that are working cool coding projects and pc/computer hacks .If you like to join my team just DM me on discord.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/34e8ab04941d41099293ebc558d94257)](https://www.codacy.com/gh/Unknownio/ErrorByNight/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Unknownio/ErrorByNight&amp;utm_campaign=Badge_Grade)
-
-## Bot features
-My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands coming soon.
-
-|Commands     | What the command do? |
-|-------------|--------------------- |
-| Ban         | Ban users            |
-| Kick        | Kick users           |
-| Poll        | ```empty```          |
-| Command name| Command description  |
 
 ## Help & Contacts
 
