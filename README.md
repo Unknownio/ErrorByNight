@@ -10,6 +10,8 @@ ErrorByNight is a small team of programmers, that are working cool coding projec
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/34e8ab04941d41099293ebc558d94257)](https://www.codacy.com/gh/Unknownio/ErrorByNight/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Unknownio/ErrorByNight&amp;utm_campaign=Badge_Grade)
 
+`Note` that you will need to put the bot(Discord Bot) on desktop, if you dont do that you will get error , and thx again for chucking my repository :)
+
 ## Help & Contacts
 
 You can get support on my discord server.
