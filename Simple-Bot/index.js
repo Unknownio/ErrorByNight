@@ -1,4 +1,4 @@
-//This Project Was Made By : Unknownio
+//This Project Was Made By : Unknownio/simple-bot
 const Discord = require('discord.js');
 const config = require('./config');
 const fs = require('fs');
