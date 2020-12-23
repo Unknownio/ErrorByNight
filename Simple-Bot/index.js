@@ -154,45 +154,45 @@ client.on('message', message => {
     }
 });
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".hello"){
        msg.reply('HELLO FRIEND!');
     }   
 })
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".info"){
         msg.reply('2.0.0!');
 
     }
 })
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".bday"){
-        msg.reply('Happy Birthday my Friend 🥳');
+        msg.reply('Happy B irthday my Friend 🥳');
 
     }
 })
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".hi"){
        msg.reply('hi nice to meet you :)');
     }   
 })
 
-client.on('message', msg =>{
+client.on('message', msg => {
     if(msg.content === ".youtube"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })  
 
-client.on('message', msg =>{
+client.on('message', msg => {
     if(msg.content === ".yt"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })
 
-client.on('message', msg =>{
+client.on('message', msg => {
     if(msg.content === ".8ball"){
        msg.reply('I can see you going to have good day ;)');
     }
