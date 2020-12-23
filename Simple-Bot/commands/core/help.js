@@ -32,7 +32,7 @@ module.exports = {
                 embed: {
                     color: 'ORANGE',
                     author: { name: 'Help pannel' },
-                    footer: { text: 'This bot uses a Github project made by Zerio (Unknownio/SimpleBot)' },
+                    footer: { text: 'This bot uses a Github project made by Unknownio (Unknownio/SimpleBot)' },
                     fields: [
                         { name: 'Name', value: command.name, inline: true },
                         { name: 'Category', value: command.category, inline: true },
