@@ -25,7 +25,7 @@ module.exports = {
             embed: {
                 color: 'ORANGE',
                 footer: { text: 'This bot uses a Github project made by Unknownio (Unknownio/SimpleBot)' },
-                fields: [
+                 fields: [
                     { name: 'Filters', value: filtersStatuses[0].join('\n'), inline: true },
                     { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },
                 ],
