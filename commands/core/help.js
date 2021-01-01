@@ -13,11 +13,11 @@ module.exports = {
                 embed: {
                     color: 'ORANGE',
                     author: { name: 'Help pannel' },
-                    footer: { text: 'This bot uses a Github project made by (Unknownio/SimpleBot)' },
+                    footer: { text: 'This bot uses a Github project made by Unknownio (Unknownio/SimpleBot)' },
                     fields: [
                         { name: 'Bot', value: infos },
                         { name: 'Music', value: music },
-                        
+                        { name: 'Filters', value: '`bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`' },
                     ],
                     timestamp: new Date(),
                     description: `To use filters, ${client.config.prefix}filter (the filter). Example : ${client.config.prefix}filter 8D.`,
@@ -32,7 +32,7 @@ module.exports = {
                 embed: {
                     color: 'ORANGE',
                     author: { name: 'Help pannel' },
-                    footer: { text: 'This bot uses a Github project made by Zerio (Unknownio/SimpleBot)' },
+                    footer: { text: 'This bot uses a Github project made by Unknownio (Unknonwio/SimpleBot)' },
                     fields: [
                         { name: 'Name', value: command.name, inline: true },
                         { name: 'Category', value: command.category, inline: true },
@@ -43,6 +43,6 @@ module.exports = {
                     description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
                 }
             });
-        }
+        };
     },
 };

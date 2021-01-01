@@ -1,12 +1,13 @@
 //This Project Was Made By : Unknownio/simple-bot
 const Discord = require('discord.js');
-const config = require('./config');
+const config = require('./config.json');
 const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
 const command = require('./command')
 
-const prefix = "."; 
+const clinet = new Discord.Client();
+client.setMaxListeners(14);
 
 const { Player } = require('discord-player');
 
@@ -55,45 +56,6 @@ for (const file of player) {
     client.player.on(file.split(".")[0], event.bind(null, client));
 };
 
-
-command(client, 'embed', (message) => {
-	const logo =
-	'https://i.pinimg.com/originals/97/86/3f/97863fa60e767e55d8d62e392a020d67.jpg'
-
-    const embed = new Discord.MessageEmbed()
-      .setTitle('My Youtube channel')
-      .setURL('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber')
-      .setAuthor(message.author.username)
-      .setImage(logo)
-      .setThumbnail(logo)
-      .setFooter('Weeb')
-      .setColor('F74D03')
-      .addFields(
-        {
-          name: 'Ban',
-          value: 'ban people',
-          inline: true,
-        },
-        {
-          name: 'Kick',
-          value: 'kick people',
-          inline: true,
-        },
-        {
-          name: 'newpoll',
-          value: 'make vote',
-          inline: true,
-		},
-		{
-			name: 'Ownwer',
-			value: 'YodaX#4079',
-		  }
-		)
-
-		message.channel.send(embed)
-	})
-
-   
 // command Ban (prefix = '.')
 client.on("message", message => {
 	if (!message.guild) return;
@@ -117,7 +79,7 @@ client.on("message", message => {
 	}
   });
 
-  //command Kick
+//command Kick
 client.on("message", message => {
 	if (!message.guild) return;
 	if (message.content.startsWith(".kick")) {
@@ -140,8 +102,8 @@ client.on("message", message => {
 	}
   });
 })
-
-  client.on("message", function(message) {
+   
+client.on("message", function(message) {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
   
@@ -192,45 +154,45 @@ client.on('message', message => {
     }
 });
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".hello"){
        msg.reply('HELLO FRIEND!');
     }   
 })
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".info"){
         msg.reply('2.0.0!');
 
     }
 })
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".bday"){
-        msg.reply('Happy Birthday my Friend 🥳');
+        msg.reply('Happy B irthday my Friend 🥳');
 
     }
 })
 
-client.on('message', msg=>{
+client.on('message', msg => {
     if(msg.content === ".hi"){
        msg.reply('hi nice to meet you :)');
     }   
 })
 
-client.on('message', msg =>{
+client.on('message', msg => {
     if(msg.content === ".youtube"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })  
 
-client.on('message', msg =>{
+client.on('message', msg => {
     if(msg.content === ".yt"){
        msg.reply('https://www.youtube.com/channel/UC-gxQ1O2J4TtW8PLHlBv0Ng?view_as=subscriber');
     }
 })
 
-client.on('message', msg =>{
+client.on('message', msg => {
     if(msg.content === ".8ball"){
        msg.reply('I can see you going to have good day ;)');
     }
