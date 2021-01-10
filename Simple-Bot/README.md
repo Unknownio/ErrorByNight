@@ -35,6 +35,8 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 | Poll        | Make a Vote          |
 | Command name| Command description  |
 
+`Note` that you will need to put the bot(Discord Bot) on desktop, if you dont do that you will get error , and thx again for checking my repository :)
+
 ## Help & Contacts
 
 You can get support on my discord server.
