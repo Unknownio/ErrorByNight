@@ -21,8 +21,6 @@ You can try the bot without downloading anything, just click [here](https://repl
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/34e8ab04941d41099293ebc558d94257)](https://www.codacy.com/gh/Unknownio/ErrorByNight/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Unknownio/ErrorByNight&amp;utm_campaign=Badge_Grade)
 
-<a href="https://discord.gg/re2M28D54m" rel="nofollow"><img src="https://camo.githubusercontent.com/2ce684c88ba9937fb583c678631ec121feb503e1d50d4972063ac6196f012019/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f3433303436383633373138333434323934352e7376673f6c6162656c3d646973636f7264" alt="Discord Server" data-canonical-src="https://img.shields.io/discord/713417725191389184.svg?label=discord" style="max-width:100%;"></a>
-
 ## How to install the bot
 1.First go to the folder `Hi (come here if your installing the bot)`.
 2.then open the folder `Node.js` and install that 
