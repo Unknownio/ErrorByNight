@@ -4,7 +4,9 @@ const config = require('./config.json');
 const fs = require('fs');
 const { userInfo } = require('os');
 const client = new Discord.Client();
-const command = require('./command')
+const command = require('./command');
+const prefix = require("./config.json");
+var ms = require('ms')
 
 const clinet = new Discord.Client();
 client.setMaxListeners(14);
@@ -19,6 +21,31 @@ client.commands = new Discord.Collection();
 const core = fs.readdirSync('./commands/core').filter(file => file.endsWith('.js'));
 const infos = fs.readdirSync('./commands/infos').filter(file => file.endsWith('.js'));
 const music = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
+
+client.on('message', async message =>{
+    if(message.channel.type === 'dm' || message.author.bot) return; 
+	const logChannel = client.channels.cache.find(channel => channel.id === "807201659092336660")
+	let words = ["banana", "orange"]
+	let foundInText = false;
+	for (var i in words) {
+		if(message.content.toLocaleLowerCase().includes(words[1].toLocaleLowerCase())) foundInText = true;
+		if (foundInText) {
+			let logEmbed = new Discord.MessageEmbed()
+			.setDescription(`<@${message.author.id}> Said a bad word`)
+			.addField(`The message`, message.content)
+			.setColor('RANDOM')
+			.setTimestamp()
+
+			let embed = new Discord.MessageEmbed()
+			.setDescription(`That word is not allowed here`)
+			.setColor(`RANDOM`)
+			.setTimestamp()
+			let msg = await message.channel.send(embded);
+			message.delete()
+			msg.delete({timeout:  '3500'})
+		} 
+	}
+})
 
 client.on("ready", () => {
 	 client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })

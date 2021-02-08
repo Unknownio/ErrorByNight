@@ -1,0 +1,25 @@
+{
+  "name": "yoda",
+  "version": "2.0.0",
+  "description": "hi  nice meet you",
+  "main": "index.js",
+  "scripts": {
+    "run": "index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "image",
+    "random",
+    "simplebot"
+  ],
+  "author": "Yoda#4079",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Unknownio/SimpleBot/issues"
+  },
+  "homepage": "https://github.com/Unknownio/SimpleBot",
+  "dependencies": {
+    
+  }
+}
