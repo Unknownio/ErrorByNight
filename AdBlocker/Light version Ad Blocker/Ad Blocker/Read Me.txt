@@ -1,4 +1,4 @@
-Za Updates odi na stranicata:( https://github.com/Unknownio/ErrorByNight )
+For updates go on this page:( https://github.com/Unknownio/ErrorByNight)
 instructions: 
 1. Chrome: write(chrome://extensions)
 1.1 click (Load unpacked) and click on the folder and on the file (manifest.json)
