@@ -33,7 +33,7 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 | Ban         | Ban users            |
 | Kick        | Kick users           |
 | Poll        | Make a Vote          |
-| youtybe notification | it can give notication when somebody uploads videos on yt or streams|
+| youtube notification | it can give notication when somebody uploads videos on yt or streams|
 
 `Note` that you will need to put the bot(Discord Bot) on desktop, if you dont do that you will get error , and thx again for checking my repository :)
 
