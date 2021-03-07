@@ -33,7 +33,7 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 | Ban         | Ban users            |
 | Kick        | Kick users           |
 | Poll        | Make a Vote          |
-| Command name| Command description  |
+| youtybe notification | it can give notication when somebody uploads videos on yt or streams|
 
 `Note` that you will need to put the bot(Discord Bot) on desktop, if you dont do that you will get error , and thx again for checking my repository :)
 
@@ -42,3 +42,5 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 You can get support on my discord server.
 
 <a target="_blank" rel="noopener noreferrer" href='https://discord.gg/8PDEQqsG5b'>![Discord Banner 3](https://discordapp.com/api/guilds/713417725191389184/widget.png?style=banner3)</a>
+
+<a target="_blank" rel="noopener noreferrer" href='https://discord.gg/g5T4Y2Tv'>![Discord Banner 3](https://discordapp.com/api/guilds/815221436179677184/widget.png?style=banner3)</a>
