@@ -1,4 +1,4 @@
-IF YOU HAVE ANY PROBLEMS CONTACT ME ON DISCORD (Ban#4079)
+IF YOU HAVE ANY PROBLEMS CONTACT ME ON DISCORD (itachiuchiha#4079)
 
 if you like to add more commands do this/or copy this:
 -fill the blank spots(HERE f(msg.content === ".   ") here just put the command).
