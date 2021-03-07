@@ -34,6 +34,7 @@ My bot have the basic commands like <b>Ban</b> and <b>Kick</b> but more commands
 | Kick        | Kick users           |
 | Poll        | Make a Vote          |
 | youtube notification | it can give notication when somebody uploads videos on yt or streams|
+| music | play music |
 
 `Note` that you will need to put the bot(Discord Bot) on desktop, if you dont do that you will get error , and thx again for checking my repository :)
 
