@@ -61,7 +61,7 @@ const core = fs.readdirSync('./commands/core').filter(file => file.endsWith('.js
 const infos = fs.readdirSync('./commands/infos').filter(file => file.endsWith('.js'));
 const music = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
 
-client.on('message', async message =>{
+client.on('message', async message => {
     if(message.channel.type === 'dm' || message.author.bot) return; 
 	const logChannel = client.channels.cache.find(channel => channel.id === "807201659092336660")
 	let words = ["banana", "orange"]
