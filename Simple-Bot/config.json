@@ -1,5 +1,8 @@
+
 {
 "prefix": ".",
-"token": "BOT TOKEN HERE",
-"folder": ["meme"]
+"token": "Bot token here",
+"folder": ["meme"],
+"CHANNEL_ID": ["UC-gxQ1O2J4TtW8PLHlBv0Ng"],
+"SERVER_CHANNEL_ID": "channel id"
 }

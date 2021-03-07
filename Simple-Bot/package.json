@@ -4,7 +4,7 @@
   "description": "hi  nice meet you",
   "main": "index.js",
   "scripts": {
-    "run": "index.js"
+    "run": "index.js, node ."
   },
   "keywords": [
     "discord",
@@ -20,6 +20,19 @@
   },
   "homepage": "https://github.com/Unknownio/SimpleBot",
   "dependencies": {
-    
+    "@discordjs/opus": "^0.4.0",
+    "bunyan": "^1.8.15",
+    "core-js": "^3.8.3",
+    "discord-player": "^3.2.1",
+    "discord.js": "^12.5.1",
+    "EventEmitter": "^1.0.0",
+    "express": "4.17.1",
+    "ffmpeg-static": "^4.2.7",
+    "fs": "^0.0.1-security",
+    "opusscript": "^0.0.7",
+    "uws": "^200.0.0",
+    "ws": "^7.4.3",
+    "youtube-notification": "^1.1.0",
+    "ytdl-core": "^4.4.5"
   }
 }

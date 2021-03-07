@@ -1,9 +1,9 @@
 module.exports = (client, message, query, tracks) => {
     message.channel.send({
         embed: {
-            color: 'ORANGE',
+            color: 'BLUE',
             author: { name: `Here are your search results for ${query}` },
-            footer: { text: 'This bot uses a Github project made by Unknownio (Unknownio/SimpleBot)' },
+            footer: { text: 'This bot uses a Github project made by Unknownio (Unknownio/ErrorByNight)' },
             timestamp: new Date(),
             description: `${tracks.map((t, i) => `**${i + 1}** - ${t.title}`).join('\n')}`,
         },

@@ -1,4 +1,4 @@
-//This Project Was Made By : Unknownio/simple-bot
+//This Project Was Made By : Unknownio/Simple-Bot
 const Discord = require('discord.js');
 const config = require('./config.json');
 const fs = require('fs');
@@ -6,15 +6,54 @@ const { userInfo } = require('os');
 const client = new Discord.Client();
 const command = require('./command');
 const prefix = require("./config.json");
-var ms = require('ms')
+var ms = require('ms');
+const http = require("http");
+const express = require("express");
+const app = express();
+var server = http.createServer(app);
 
 const clinet = new Discord.Client();
-client.setMaxListeners(14);
+client.setMaxListeners(15);
 
 const { Player } = require('discord-player');
 
+app.get("/", (request, response) => {
+	console.log(`Ping Received.`);
+	response.writeHead(200, { "Content-Type": "text/plain" });
+	response.end("DISCORD BOT YO");
+  });
+  
+  const listener = server.listen(process.env.PORT, function() {
+	console.log(`Your app is listening on port ` + listener.address().port);
+  });
+  
+  const { TOKEN, CHANNEL_ID, SERVER_CHANNEL_ID } = require("./config.json");
+  const YouTubeNotifier = require('youtube-notification');
+  
+  
+  client.on("ready", () => {
+	console.log("Watching " + CHANNEL_ID.length  + " Channels")
+  })
+  
+  const notifier = new YouTubeNotifier({
+	hubCallback: 'https://tan-thankful-wash.glitch.me/yt',
+	secret: 'JOIN_MY_SERVER_OR_DIE'
+  });
+  
+  
+  notifier.on('notified', data => {
+	console.log('New Video');
+	client.channels.cache.get(SERVER_CHANNEL_ID).send(
+	  `**${data.channel.name}** just uploaded a new video - **${data.video.link}**`
+	);
+  });
+   
+  notifier.subscribe(CHANNEL_ID);
+  
+  app.use("/yt", notifier.listener());
+
 client.player = new Player(client);
-client.config = require('./config/bot.json');
+client.config = require('./config/bot');
 client.emotes = require('./config/emojis.json');
 client.commands = new Discord.Collection();
 
@@ -22,7 +61,7 @@ const core = fs.readdirSync('./commands/core').filter(file => file.endsWith('.js
 const infos = fs.readdirSync('./commands/infos').filter(file => file.endsWith('.js'));
 const music = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
 
-client.on('message', async message => {
+client.on('message', async message =>{
     if(message.channel.type === 'dm' || message.author.bot) return; 
 	const logChannel = client.channels.cache.find(channel => channel.id === "807201659092336660")
 	let words = ["banana", "orange"]
@@ -46,10 +85,10 @@ client.on('message', async message => {
 		} 
 	}
 })
-
 client.on("ready", () => {
-	 client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
+	client.user.setActivity("Anime", { type: "STREAMING", url: "https://www.twitch.tv/thewhiteknightx" })
 
+	
 for (const file of core) {
     console.log(`Loading command ${file}`);
     const command = require(`./commands/core/${file}`);
@@ -82,7 +121,6 @@ for (const file of player) {
     const event = require(`./player/${file}`);
     client.player.on(file.split(".")[0], event.bind(null, client));
 };
-
 // command Ban (prefix = '.')
 client.on("message", message => {
 	if (!message.guild) return;
