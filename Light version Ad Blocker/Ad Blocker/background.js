@@ -1,0 +1,40 @@
+const defaultFilters = [
+"*://*.tpc.googlesyndication.com/*",
+"*://c.bebi.com/*",
+"*://*.cdn.sb-inv1.com/*",
+"*://run-syndicate.com/*",
+"*://redir.bebi.com/*",
+"*://c.bebi.com/*",
+"*://platform.bidgear.com/*",
+"*://*.img.adskeeper.co.uk/*",
+"*://st.bebi.com/micro-logo.png*",
+"*://st.bebi.com/*",
+"*://*.searchsecurer.com/*",
+"*://*.lparchv.click/*",
+"*://stitchkidney.com/*",
+"*://lcdn.runative-syndicate.com/*",
+"*://onmarshtompor.com/*",
+"*://*.cdn.adskeeper.co.uk/*",
+"*://*.adskeeper.co.uk/*",
+"*://*.widgets.adskeeper.com/*",
+"*://*.offerimage.com/*",
+"*://in-page-push.com/*",
+"*://*.pinup-casino.com.ru/*",
+"*://*.www.bet365.com/*",
+"*://*.media.opencdn.co/?id=55344746756c38d*",
+"*://*.media.opencdn.co/?id=55344746756c343d*",
+"*://*.media.opencdn.co/?id=55344746756c6b3d*",
+"*://*.media.opencdn.co/?id=55344746756c673d*",
+"*://*.direct.apus.tech/*",
+"*://frontierdough.com/*",
+"*://adsco.re/*",
+"*://tempest.services.disqus.com/*",
+"*://*.disqus.com/*",
+"*://*.toglooman.com/*"
+]
+
+chrome.webRequest.onBeforeRequest.addListener(
+    function(details) { return { cancel: true }},
+    { urls: defaultFilters },
+    ["blocking"]
+)
