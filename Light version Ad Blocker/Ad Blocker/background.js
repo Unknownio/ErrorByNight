@@ -139,7 +139,17 @@ const defaultFilters = [
 "*://*.sa.api.intl.miui.com/*",
 "*://*.tracking.intl.miui.com/*",
 "*://*.tracking.india.miui.com/*",
-"*://*.tracking.rus.miui.com/*"
+"*://*.tracking.rus.miui.com/*",
+"*://*.aax-us-east.amazon-adsystem.com/*",
+"*://*.wms-na.amazon-adsystem.com/*",
+"*://*.c.adskeeper.com/*",
+"*://*.clickup.com/*",
+"*://*.cdn.bncloudfl.com/*",
+"*://*.cdn.cloudimagesb.com/*",
+"*://*.kgdvs9ov3l2aasw4nuts.com/*",
+"*://*.cdn.cloudfrale.com/*",
+"*://*.canyoublockit.com/wp-content/uploads/2019/09/Rikc-Roll-HTML5.mp4/*",
+"*://*.canyoublockit.com/wp-content/uploads/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
@@ -147,3 +157,4 @@ chrome.webRequest.onBeforeRequest.addListener(
     { urls: defaultFilters },
     ["blocking"]
 )
+
