@@ -148,8 +148,24 @@ const defaultFilters = [
 "*://*.cdn.cloudimagesb.com/*",
 "*://*.kgdvs9ov3l2aasw4nuts.com/*",
 "*://*.cdn.cloudfrale.com/*",
-"*://*.canyoublockit.com/wp-content/uploads/2019/09/Rikc-Roll-HTML5.mp4/*",
-"*://*.canyoublockit.com/wp-content/uploads/*"
+"*://*.canyoublockit.com/wp-content/uploads/*",
+"*://*.betalonflamechan.com/*",
+"*://*.mybetterdl.com/*",
+"*://*.coinsbit.io/*",
+"*://*.gemorul.com/*",
+"*://*.pybushobi.com/*",
+"*://*.joaglouwulin.com/*",
+"*://*.p374865.clksite.com/adServe/*",
+"*://*.genshin.mihoyo.com/*",
+"*://*.expertist.xyz/*",
+"*://*.c3.taboola.com/*",
+"*://*.hero-wars.com/*",
+"*://*.images.taboola.com/*",
+"*://*.cdn.taboola.com/*",
+"*://*.img.connatix.com/*",
+"*://*.cdn.realsport101.com/*",
+"*://*.masdk.googleapis.com/*",
+"*://*.cd.connatix.com/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
