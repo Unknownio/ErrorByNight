@@ -2,10 +2,14 @@
     "name": "YodaX",
     "version": "1.1",
     "description": "YodaX AdBlocker",
-    "permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "http://*/", "https://*/"], 
+    "permissions": ["declarativeContent","activeTab","webRequest", "webRequestBlocking", "<all_urls>", "http://*/", "https://*/"], 
     "background": {
         "scripts": ["background.js"]
 },
+"browser_action": {
+    "default_popup": "popup.html"
+    },
+
     "icons": {
         "16": "icons/logo_16x16.png",
         "48": "icons/logo_48x48.png",
