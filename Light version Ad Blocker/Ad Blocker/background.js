@@ -1,5 +1,16 @@
 const defaultFilters = [
 "*://*.tpc.googlesyndication.com/*",
+"*://*.ads.google.com/*",
+"*://*.adservice.google.com/*",
+"*://*.googleadservices.com/*",
+"*://*.an.facebook.com/*",
+"*://*.ads-api.twitter.com/*",
+"*://*.an.facebook.com/*",
+"*://*.advertising.twitter.com/*",
+"*://*.ads-dev.pinterest.com/*",
+"*://*.widgets.pinterest.com/*",
+"*://*.analytics-sg.tiktok.com/*",
+"*://*.d.reddit.com/*",
 "*://*.adblock-tester.com/banners/pr_advertising_ads_banner.gif/*",
 "*://*.adblock-tester.com/banners/pr_advertising_ads_banner.png/*",
 "*://*.d2wy8f7a9ursnm.cloudfront.net/*",
@@ -74,6 +85,8 @@ const defaultFilters = [
 "*://*.ad.doubleclick.net/*",
 "*://*.browser.sentry-cdn.com/*",
 "*://*.notify.bugsnag.com/*",
+"*://*.api.bugsnag.com/*",
+"*://*.app.bugsnag.com/*",
 "*://*.sessions.bugsnag.com/*",
 "*://*.ads.youtube.com/*",
 "*://*.youtube.cleverads.vn/*",
@@ -194,7 +207,20 @@ const defaultFilters = [
 "*://*.s.gravatar.com/*",
 "*://*.ovvan.xdwhatijunn.xyz/*",
 "*://*.s.rankmath.com/*",
-"*://*.clickup.com/*"
+"*://*.clickup.com/*",
+"*://*.mrpcgamer.co/wp-includes/*",
+"*://*.affiliationjs.s3.amazonaws.com/*",
+"*://*.advertising-api-eu.amazon.com/*",
+"*://*.luckyorange.com/*",
+"*://*.app.getsentry.com/*",
+"*://*.mrpcgamer.co/wp-includes/js*",
+"*://*.d1f05vr3sjsuy7.cloudfront.net/*",
+"*://*.ar-gamez.com/*",
+"*://*.ad.admitad.com/*",
+"*://*.adtago.s3.amazonaws.com/*",
+"*://*.analyticsengine.s3.amazonaws.com/*",
+"*://*.advice-ads.s3.amazonaws.com/*",
+"*://*.yt3.ggpht.com/L3YXqipHuhFBHUO6UqCpr49I4tQaUEuA1fPfdwOJct30EK9wuAnNViyHysvt5RRV4lAqdm4A=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
