@@ -208,6 +208,8 @@ const defaultFilters = [
 "*://*.ovvan.xdwhatijunn.xyz/*",
 "*://*.s.rankmath.com/*",
 "*://*.clickup.com/*",
+"*://*.rauch.cc/*",
+"*://*.a.adtng.com/*",
 "*://*.mrpcgamer.co/wp-includes/*",
 "*://*.affiliationjs.s3.amazonaws.com/*",
 "*://*.advertising-api-eu.amazon.com/*",
@@ -220,7 +222,10 @@ const defaultFilters = [
 "*://*.adtago.s3.amazonaws.com/*",
 "*://*.analyticsengine.s3.amazonaws.com/*",
 "*://*.advice-ads.s3.amazonaws.com/*",
-"*://*.yt3.ggpht.com/L3YXqipHuhFBHUO6UqCpr49I4tQaUEuA1fPfdwOJct30EK9wuAnNViyHysvt5RRV4lAqdm4A=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj/*"
+"*://*.yt3.ggpht.com/L3YXqipHuhFBHUO6UqCpr49I4tQaUEuA1fPfdwOJct30EK9wuAnNViyHysvt5RRV4lAqdm4A=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj/*",
+"*://*.pr_advertising_ads_banner.swf/*",
+"*://*.banners-hw.trafficfactory.biz/*",
+"*://*.static.trafficjunky.com/*",
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
