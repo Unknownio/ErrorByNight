@@ -226,6 +226,7 @@ const defaultFilters = [
 "*://*.pr_advertising_ads_banner.swf/*",
 "*://*.banners-hw.trafficfactory.biz/*",
 "*://*.static.trafficjunky.com/*",
+"*://*.dliscord.com/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
