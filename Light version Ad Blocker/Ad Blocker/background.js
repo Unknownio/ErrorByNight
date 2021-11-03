@@ -226,7 +226,16 @@ const defaultFilters = [
 "*://*.pr_advertising_ads_banner.swf/*",
 "*://*.banners-hw.trafficfactory.biz/*",
 "*://*.static.trafficjunky.com/*",
-"*://*.dliscord.com/*"
+"*://*.dliscord.com/*",
+"*://*.rpc-php.trafficfactory.biz/*",
+"*://*.s3t3d2y7.ackcdn.net/*",
+"*://*.fgn.cdn.serverable.com/*",
+"*://*.cdn.creativesumo.com/*",
+"*://*.hentaigamer.org/wp-content/*",
+"*://*.albeitinflame.com/*",
+"*://*.c0.pubmine.com/*",
+"*://*.advertere.zamunda.net/*",
+"*://*.track.coinverti.com//////////*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
