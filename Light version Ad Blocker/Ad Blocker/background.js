@@ -157,7 +157,6 @@ const defaultFilters = [
 "*://*.aax-us-east.amazon-adsystem.com/*",
 "*://*.wms-na.amazon-adsystem.com/*",
 "*://*.c.adskeeper.com/*",
-"*://*.clickup.com/*",
 "*://*.cdn.bncloudfl.com/*",
 "*://*.cdn.cloudimagesb.com/*",
 "*://*.kgdvs9ov3l2aasw4nuts.com/*",
@@ -222,7 +221,6 @@ const defaultFilters = [
 "*://*.adtago.s3.amazonaws.com/*",
 "*://*.analyticsengine.s3.amazonaws.com/*",
 "*://*.advice-ads.s3.amazonaws.com/*",
-"*://*.yt3.ggpht.com/L3YXqipHuhFBHUO6UqCpr49I4tQaUEuA1fPfdwOJct30EK9wuAnNViyHysvt5RRV4lAqdm4A=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj/*",
 "*://*.pr_advertising_ads_banner.swf/*",
 "*://*.banners-hw.trafficfactory.biz/*",
 "*://*.static.trafficjunky.com/*",
@@ -235,7 +233,18 @@ const defaultFilters = [
 "*://*.albeitinflame.com/*",
 "*://*.c0.pubmine.com/*",
 "*://*.advertere.zamunda.net/*",
-"*://*.track.coinverti.com//////////*"
+"*://*.track.coinverti.com/*",
+"*://*.yt3.ggpht.com/*",
+"*://*.curiositystream.com/*",
+"*://*.cdn.adskeeper.co.uk/*",
+"*://*.s-img.adskeeper.co.uk/*",
+"*://*.s-img.steepto.com/*",
+"*://*.steepto.com/*",
+"*://*.adserver.adreactor.com/*",
+"*://*.adskeeper.co.uk/*",
+"*://*.cdn.sb4you1.com/*",
+"*://*.p249083.mycdn.co/*",
+"*://*.thestudent.world/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
