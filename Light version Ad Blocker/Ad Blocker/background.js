@@ -244,7 +244,20 @@ const defaultFilters = [
 "*://*.adskeeper.co.uk/*",
 "*://*.cdn.sb4you1.com/*",
 "*://*.p249083.mycdn.co/*",
-"*://*.thestudent.world/*"
+"*://*.thestudent.world/*",
+"*://*.gstatic.com/*",
+"*://*.youtube.com/premium/*",
+"*://*.tsyndicate.com/*",
+"*://*.lcdn.tsyndicate.com/*",
+"*://*.cdn.mgid.com/*",
+"*://*.mgid.com/*",
+"*://*.s-img.mgid.com/*",
+"*://*.enlisted.net/*",
+"*://*.befirstcdn.com/*",
+"*://*.track.bestgames2018.net/*",
+"*://*.ostlon.com/*",
+"*://*.enlisted.net/*",
+"*://*.xfullclearsafex.com/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
