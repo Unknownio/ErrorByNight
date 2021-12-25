@@ -20,7 +20,7 @@ const { Player } = require('discord-player');
 app.get("/", (request, response) => {
 	console.log(`Ping Received.`);
 	response.writeHead(200, { "Content-Type": "text/plain" });
-	response.end("DISCORD BOT YO");
+	response.end("DISCORD BOT ON");
   });
   
   const listener = server.listen(process.env.PORT, function() {
