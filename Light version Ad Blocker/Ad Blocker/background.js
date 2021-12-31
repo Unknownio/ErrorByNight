@@ -257,7 +257,13 @@ const defaultFilters = [
 "*://*.track.bestgames2018.net/*",
 "*://*.ostlon.com/*",
 "*://*.enlisted.net/*",
-"*://*.xfullclearsafex.com/*"
+"*://*.xfullclearsafex.com/*",
+"*://*.canyoublockit.com/wp-content/jqueryscript.js*",
+"*://*.cdn.pncloudfl.com/*",
+"*://*.adskeeper.com/*",
+"*://*.pix.eu.criteo.net/*",
+"*://*.static.a-ads.com/*",
+"*://*.crrepo.com/*"
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
