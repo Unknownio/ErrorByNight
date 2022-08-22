@@ -27,12 +27,15 @@
     "discord.js": "^12.5.1",
     "EventEmitter": "^1.0.0",
     "express": "4.17.1",
-    "ffmpeg-static": "^4.2.7",
+    "ffmpeg-static": "^5.0.2",
     "fs": "^0.0.1-security",
     "opusscript": "^0.0.7",
     "uws": "^200.0.0",
     "ws": "^7.4.3",
     "youtube-notification": "^1.1.0",
-    "ytdl-core": "^4.4.5"
+    "ytdl-core": "^4.11.0",
+    "axios": "^0.27.2",
+    "ffmpeg": "^0.0.4",
+    "xml2js": "^0.4.23"
   }
 }
