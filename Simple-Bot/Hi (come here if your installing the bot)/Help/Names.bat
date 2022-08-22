@@ -4,14 +4,11 @@ echo ---------------------------------------------------------------------------
 echo "hello,ok i see there is a problem , ok so now i will name all the names of errors
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo 1.Soo First if u get this error:UnhandledPromiseRejectionWarning: Error [TOKEN_INVALID]: An invalid token was provided.
-echo --Solutions to this is: You need to put the "BOT TOKEN, Url=https://discord.com/developers/applications, now just make new application then got to bot and Copy the token"
+echo --Solution to this is: You need to put the "BOT TOKEN, Url=https://discord.com/developers/applications, now just make new application then got to bot and Copy the token"
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo 2.Soo second one is:SyntaxError: missing ) after argument list
-echo --Solutions to this is: Soo this is simpley you only need to check where you forgot to add ; ) ;
+echo --Solution to this is: Soo this is simpley you only need to check where you forgot to add ; ) ;
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
-echo 3. Well i can't think about this third on FOR THIS CODE(look im only speaking about this code,ok?)
-echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 PAUSE

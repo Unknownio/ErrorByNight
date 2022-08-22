@@ -1,9 +1,9 @@
 //This Project Was Made By : Unknownio/Simple-Bot
 const Discord = require('discord.js');
+const client = new Discord.Client();
 const config = require('./config.json');
 const fs = require('fs');
 const { userInfo } = require('os');
-const client = new Discord.Client();
 const command = require('./command');
 const prefix = require("./config.json");
 var ms = require('ms');
@@ -12,7 +12,6 @@ const express = require("express");
 const app = express();
 var server = http.createServer(app);
 
-const clinet = new Discord.Client();
 client.setMaxListeners(15);
 
 const { Player } = require('discord-player');
