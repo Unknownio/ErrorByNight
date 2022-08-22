@@ -1,7 +1,7 @@
 
 {
 "prefix": ".",
-"token": "Bot token here",
+"token": "",
 "folder": ["meme"],
 "CHANNEL_ID": ["UC-gxQ1O2J4TtW8PLHlBv0Ng"],
 "SERVER_CHANNEL_ID": "channel id"
