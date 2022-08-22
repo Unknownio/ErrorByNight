@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Unknownio/SimpleBot",
   "dependencies": {
-    "@discordjs/opus": "^0.4.0",
+    "@discordjs/opus": "^0.8.0",
     "bunyan": "^1.8.15",
     "core-js": "^3.8.3",
     "discord-player": "^3.2.1",
