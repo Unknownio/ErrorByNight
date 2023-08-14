@@ -1,7 +1,7 @@
 @echo off
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-echo "hello,ok i see there is a problem , ok so now i will name all the names of errors
+echo "hello,ok i see there is a problem , ok so now i will name all the names of errors that i found
 echo ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo 1.Soo First if u get this error:UnhandledPromiseRejectionWarning: Error [TOKEN_INVALID]: An invalid token was provided.
 echo --Solution to this is: You need to put the "BOT TOKEN, Url=https://discord.com/developers/applications, now just make new application then got to bot and Copy the token"

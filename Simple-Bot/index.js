@@ -1,7 +1,12 @@
 //This Project Was Made By : Unknownio/Simple-Bot
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: [
+	Discord.GatewayIntentBits.Guilds,
+	Discord.GatewayIntentBits.GuildMessages,
+	Discord.GatewayIntentBits.GuildVoiceStates
+  ]})
 const config = require('./config.json');
+const { joinVoiceChannel } = require('@discordjs/voice');
 const fs = require('fs');
 const { userInfo } = require('os');
 const command = require('./command');
@@ -62,7 +67,7 @@ const music = fs.readdirSync('./commands/music').filter(file => file.endsWith('.
 
 client.on('message', async message => {
     if(message.channel.type === 'dm' || message.author.bot) return; 
-	const logChannel = client.channels.cache.find(channel => channel.id === "807201659092336660")
+	const logChannel = client.channels.cache.find(channel => channel.id === "819835423793872897")
 	let words = ["banana", "orange"]
 	let foundInText = false;
 	for (var i in words) {

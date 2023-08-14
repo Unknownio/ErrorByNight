@@ -13,29 +13,33 @@
     "random",
     "simplebot"
   ],
-  "author": "Yoda#4079",
+  "author": "Mritachiuchiha#4079",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Unknownio/SimpleBot/issues"
   },
   "homepage": "https://github.com/Unknownio/SimpleBot",
-  "devDependencies": {
-    "@discordjs/opus": "^0.8.0",
+  "dependencies": {
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/voice": "^0.16.0",
+    "axios": "^1.4.0",
     "bunyan": "^1.8.15",
-    "core-js": "^3.8.3",
-    "discord-player": "^3.2.1",
-    "discord.js": "^12.5.1",
+    "core-js": "^3.32.0",
+    "discord-player": "^6.6.2",
+    "discord.js": "^14.12.1",
     "EventEmitter": "^1.0.0",
-    "express": "4.17.1",
-    "ffmpeg-static": "^5.0.2",
-    "fs": "^0.0.1-security",
-    "opusscript": "^0.0.7",
-    "uws": "^200.0.0",
-    "ws": "^7.4.3",
-    "youtube-notification": "^1.1.0",
-    "ytdl-core": "^4.11.0",
-    "axios": "^0.27.2",
+    "express": "^4.18.2",
     "ffmpeg": "^0.0.4",
-    "xml2js": "^0.4.23"
+    "ffmpeg-static": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "opusscript": "^0.0.8",
+    "uws": "^200.0.0",
+    "ws": "^8.13.0",
+    "xml2js": "^0.6.2",
+    "youtube-notification": "^1.1.0",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0"
   }
 }
