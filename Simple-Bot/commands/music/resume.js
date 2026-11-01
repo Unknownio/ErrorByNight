@@ -2,19 +2,21 @@ module.exports = {
     name: 'resume',
     aliases: [],
     category: 'Music',
+    description: 'Resumes playback of a paused song',
     utilisation: '{prefix}resume',
 
-    execute(client, message) {
-        if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
+    async execute(client, message) {
+        if (!message.member?.voice?.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
+        if (message.guild.members.me.voice?.channel && message.member.voice.channel.id !== message.guild.members.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
 
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
+        const queue = client.player.nodes.get(message.guild.id);
+        if (!queue || !queue.isPlaying()) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
-        if (!client.player.getQueue(message).paused) return message.channel.send(`${client.emotes.error} - The music is already playing !`);
+        if (!queue.node.isPaused()) return message.channel.send(`${client.emotes.error} - The music is already playing !`);
 
-        client.player.resume(message);
+        queue.node.resume();
 
-        message.channel.send(`${client.emotes.success} - Song ${client.player.getQueue(message).playing.title} **resumed** !`);
+        message.channel.send(`${client.emotes.success} - Song **${queue.currentTrack?.title}** resumed !`);
     },
 };

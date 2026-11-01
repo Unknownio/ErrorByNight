@@ -16,5 +16,10 @@
   "flanger": "Flanger",
   "gate": "Gate",
   "haas": "Haas",
-  "mcompand": "Mcompand"
+  "mcompand": "Mcompand",
+  "lofi": "Lofi",
+  "mono": "Mono",
+  "chorus": "Chorus",
+  "compressor": "Compressor",
+  "earrape": "Earrape"
 }

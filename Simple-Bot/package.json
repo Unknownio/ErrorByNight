@@ -4,14 +4,16 @@
   "description": "hi  nice meet you",
   "main": "index.js",
   "scripts": {
-    "run": "index.js, node ."
+    "start": "node --max-http-header-size=65536 index.js",
+    "dev": "node --max-http-header-size=65536 index.js",
+    "lint": "eslint ."
   },
   "keywords": [
     "discord",
     "bot",
-    "image",
-    "random",
-    "simplebot"
+    "music",
+    "discord.js",
+    "discord-player"
   ],
   "author": "Mritachiuchiha#4079",
   "license": "ISC",
@@ -20,26 +22,29 @@
   },
   "homepage": "https://github.com/Unknownio/SimpleBot",
   "dependencies": {
-    "@discordjs/opus": "^0.9.0",
-    "@discordjs/voice": "^0.16.0",
-    "axios": "^1.4.0",
-    "bunyan": "^1.8.15",
-    "core-js": "^3.32.0",
-    "discord-player": "^6.6.2",
-    "discord.js": "^14.12.1",
-    "EventEmitter": "^1.0.0",
-    "express": "^4.18.2",
-    "ffmpeg": "^0.0.4",
-    "ffmpeg-static": "^5.1.0",
-    "fs": "^0.0.1-security",
-    "opusscript": "^0.0.8",
-    "uws": "^200.0.0",
-    "ws": "^8.13.0",
-    "xml2js": "^0.6.2",
-    "youtube-notification": "^1.1.0",
-    "ytdl-core": "^4.11.5"
+    "@discord-player/extractor": "^7.1.0",
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.19.0",
+    "@distube/ytdl-core": "^5.2.0",
+    "@snazzah/davey": "^0.1.12",
+    "axios": "^1.7.9",
+    "discord-api-types": "^0.38.37",
+    "discord-player": "^7.1.0",
+    "discord-player-youtubei": "^1.5.0",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.15",
+    "opusscript": "^0.1.1",
+    "play-dl": "^1.9.7",
+    "prism-media": "^1.3.5",
+    "youtube-notification": "^1.1.0"
   },
   "devDependencies": {
-    "eslint": "^8.47.0"
+    "eslint": "^8.57.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

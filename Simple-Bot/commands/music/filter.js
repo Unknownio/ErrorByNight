@@ -2,29 +2,58 @@ module.exports = {
     name: 'filter',
     aliases: [],
     category: 'Music',
-    utilisation: '{prefix}filter [filter name]',
+    description: 'Toggles an audio filter (e.g. 8D, bassboost, nightcore) or turns filters off',
+    utilisation: '{prefix}filter [filter name / off]',
 
-    execute(client, message, args) {
-        if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
+    async execute(client, message, args) {
+        if (!message.member?.voice?.channel) {
+            return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
+        }
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
+        if (message.guild.members.me.voice?.channel && message.member.voice.channel.id !== message.guild.members.me.voice.channel.id) {
+            return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
+        }
 
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
+        const queue = client.player?.nodes?.get(message.guild.id);
+        if (!queue || !queue.currentTrack) {
+            return message.channel.send(`${client.emotes.error} - No music currently playing !`);
+        }
 
-        if (!args[0]) return message.channel.send(`${client.emotes.error} - Please specify a valid filter to enable or disable !`);
+        if (!queue.filters?.ffmpeg) {
+            return message.channel.send(`${client.emotes.error} - Filters are not available on this player !`);
+        }
 
-        const filterToUpdate = Object.values(client.filters).find((f) => f.toLowerCase() === args[0].toLowerCase());
+        if (!args[0]) {
+            return message.channel.send(`${client.emotes.error} - Please specify a filter name (e.g. \`8D\`, \`bassboost\`, \`nightcore\`) or use \`${client.config.prefix}filters\` to see all filters!`);
+        }
 
-        if (!filterToUpdate) return message.channel.send(`${client.emotes.error} - This filter doesn't exist !`);
+        const input = args[0].trim();
+        const filtersMap = client.filters || require('../../config/filters.json');
 
-        const filterRealName = Object.keys(client.filters).find((f) => client.filters[f] === filterToUpdate);
+        // Option to reset/disable all filters
+        if (['off', 'clear', 'reset', 'disable'].includes(input.toLowerCase())) {
+            await queue.filters.ffmpeg.setFilters([]);
+            return message.channel.send(`${client.emotes.success} - All audio filters have been **disabled** !`);
+        }
 
-        const queueFilters = client.player.getQueue(message).filters;
-        const filtersUpdated = {};
-        filtersUpdated[filterRealName] = queueFilters[filterRealName] ? false : true;
-        client.player.setFilters(message, filtersUpdated);
+        // Case-insensitive match against registered filters
+        const filterKey = Object.keys(filtersMap).find(
+            f => f.toLowerCase() === input.toLowerCase()
+        ) || (queue.filters.ffmpeg.isValidFilter(input) ? input : null);
 
-        if (filtersUpdated[filterRealName]) message.channel.send(`${client.emotes.music} - I'm **adding** the filter to the music, please wait... Note : the longer the music is, the longer this will take.`);
-        else message.channel.send(`${client.emotes.music} - I'm **disabling** the filter on the music, please wait... Note : the longer the music is playing, the longer this will take.`);
+        if (!filterKey) {
+            return message.channel.send(`${client.emotes.error} - Filter **${input}** does not exist ! Use \`${client.config.prefix}filters\` to see available filters.`);
+        }
+
+        try {
+            await queue.filters.ffmpeg.toggle(filterKey);
+            const enabledList = (queue.filters.ffmpeg.getFiltersEnabled?.() || queue.filters.ffmpeg.filters || []).map(f => f.toLowerCase());
+            const isNowEnabled = enabledList.includes(filterKey.toLowerCase());
+
+            message.channel.send(`${client.emotes.music} - Filter **${filtersMap[filterKey] || filterKey}** is now ${isNowEnabled ? '**enabled**' : '**disabled**'} ! (The music will seamlessly adjust)`);
+        } catch (error) {
+            console.error('Error toggling filter:', error);
+            return message.channel.send(`${client.emotes.error} - Failed to apply filter **${input}**: ${error.message}`);
+        }
     },
 };
