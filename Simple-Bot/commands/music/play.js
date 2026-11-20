@@ -22,7 +22,7 @@ module.exports = {
 		const query = args.join(' ');
 
 		try {
-			await client.player.play(message.member.voice.channel, query, {
+			const res = await client.player.play(message.member.voice.channel, query, {
 				requestedBy: message.author,
 				nodeOptions: {
 					metadata: {
@@ -37,6 +37,17 @@ module.exports = {
 				},
 				searchEngine: QueryType.AUTO,
 			});
+
+			if (res?.duplicate) {
+				message.react('⚠️').catch(() => undefined);
+				if (res.isPlaylist) {
+					return message.channel.send(`⚠️ - All **${res.totalTracks}** songs from **${res.playlistTitle}** are already in the queue!`);
+				}
+				if (res.reason === 'playing') {
+					return message.channel.send(`⚠️ - **${res.track.title}** is already currently playing!`);
+				}
+				return message.channel.send(`⚠️ - **${res.track.title}** is already in the queue (Position **#${res.position}**)!`);
+			}
 
 			message.react('✅').catch(() => undefined);
 		} catch (error) {

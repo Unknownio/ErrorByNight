@@ -1,9 +1,9 @@
 module.exports = {
     name: 'skipto',
-    aliases: ['jump'],
+    aliases: ['st'],
     category: 'Music',
-    description: 'Jumps directly to any song in the queue (e.g. .skipto 4)',
-    utilisation: '{prefix}skipto [track number]',
+    description: 'Skips directly to a song in the queue and removes the songs before it (use .jump to keep skipped songs)',
+    utilisation: '{prefix}skipto [track # or song name]',
 
     async execute(client, message, args) {
         if (!message.member?.voice?.channel) {
@@ -23,16 +23,33 @@ module.exports = {
             return message.channel.send(`${client.emotes.error} - There are no upcoming tracks in the queue to skip to !`);
         }
 
-        const index = parseInt(args[0], 10);
-        if (isNaN(index) || index < 1 || index > queue.tracks.size) {
-            return message.channel.send(`${client.emotes.error} - Please specify a valid track number between **1** and **${queue.tracks.size}** !`);
+        if (!args[0]) {
+            return message.channel.send(`${client.emotes.error} - Please specify a track number (1-${queue.tracks.size}) or song title!`);
         }
 
-        const trackIndex = index - 1;
-        const targetTrack = queue.tracks.toArray()[trackIndex];
+        const tracks = queue.tracks.toArray();
+        const input = args.join(' ').trim();
+        let trackIndex = -1;
 
+        if (/^\d+$/.test(input)) {
+            const index = parseInt(input, 10);
+            if (index < 1 || index > tracks.length) {
+                return message.channel.send(`${client.emotes.error} - Please specify a valid track number between **1** and **${tracks.length}** !`);
+            }
+            trackIndex = index - 1;
+        } else {
+            const lower = input.toLowerCase();
+            trackIndex = tracks.findIndex(
+                t => t.title?.toLowerCase().includes(lower) || t.author?.toLowerCase().includes(lower)
+            );
+            if (trackIndex === -1) {
+                return message.channel.send(`${client.emotes.error} - Couldn't find any song matching **"${input}"** in the queue!`);
+            }
+        }
+
+        const targetTrack = tracks[trackIndex];
         queue.node.skipTo(trackIndex);
 
-        return message.channel.send(`⏭️ - Skipped directly to track **#${index}** (**${targetTrack?.title || 'Unknown track'}**) !`);
+        return message.channel.send(`⏭️ - Skipped directly to track **#${trackIndex + 1}** (**${targetTrack?.title || 'Unknown track'}**) !`);
     },
 };

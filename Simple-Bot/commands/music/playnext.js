@@ -1,4 +1,5 @@
 const { QueryType } = require('discord-player');
+const { findDuplicateInQueue, filterUniqueTracks } = require('../../utils/queueUtils');
 
 module.exports = {
     name: 'playnext',
@@ -59,13 +60,25 @@ module.exports = {
             }
 
             if (searchResult.playlist) {
-                // Insert tracks at the top of the queue in order
-                for (let i = searchResult.tracks.length - 1; i >= 0; i--) {
-                    queue.insertTrack(searchResult.tracks[i], 0);
+                const { uniqueTracks, skippedCount, totalTracks } = filterUniqueTracks(queue, searchResult.tracks);
+                if (uniqueTracks.length === 0) {
+                    return message.channel.send(`⚠️ - All **${totalTracks}** songs from **${searchResult.playlist.title}** are already in the queue!`);
                 }
-                return message.channel.send(`⏭️ - Added **${searchResult.tracks.length}** songs from playlist **${searchResult.playlist.title}** to play next !`);
+                // Insert unique tracks at the top of the queue in order
+                for (let i = uniqueTracks.length - 1; i >= 0; i--) {
+                    queue.insertTrack(uniqueTracks[i], 0);
+                }
+                const skippedNote = skippedCount > 0 ? ` *(skipped ${skippedCount} duplicate song(s))*` : '';
+                return message.channel.send(`⏭️ - Added **${uniqueTracks.length}** songs from playlist **${searchResult.playlist.title}** to play next!${skippedNote}`);
             } else {
                 const track = searchResult.tracks[0];
+                const dup = findDuplicateInQueue(queue, track);
+                if (dup) {
+                    if (dup.reason === 'playing') {
+                        return message.channel.send(`⚠️ - **${dup.track.title}** is already currently playing!`);
+                    }
+                    return message.channel.send(`⚠️ - **${dup.track.title}** is already in the queue (Position **#${dup.position}**)!`);
+                }
                 queue.insertTrack(track, 0);
                 return message.channel.send(`⏭️ - Added **${track.title}** to play next right after this song !`);
             }

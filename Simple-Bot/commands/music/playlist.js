@@ -52,6 +52,18 @@ module.exports = {
             });
 
             await statusMsg.delete().catch(() => {});
+
+            if (result?.duplicate) {
+                message.react('⚠️').catch(() => undefined);
+                if (result.isPlaylist) {
+                    return message.channel.send(`⚠️ - All **${result.totalTracks}** songs from **${result.playlistTitle}** are already in the queue!`);
+                }
+                if (result.reason === 'playing') {
+                    return message.channel.send(`⚠️ - **${result.track.title}** is already currently playing!`);
+                }
+                return message.channel.send(`⚠️ - **${result.track.title}** is already in the queue (Position **#${result.position}**)!`);
+            }
+
             message.react('✅').catch(() => undefined);
         } catch (error) {
             console.error('Playlist command failed:', error);

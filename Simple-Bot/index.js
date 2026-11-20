@@ -23,8 +23,31 @@ Module.prototype.require = function(id) {
     return originalRequire.apply(this, arguments);
 };
 
+// Patch @discord-player/ffmpeg so output seeking (-ss after -i) is used instead of input seeking (-ss before -i).
+// Input seeking (-ss before -i) on HLS fMP4 .m3u8 streams (e.g. SoundCloud) causes FFmpeg to output 0 bytes and skip the song when toggling audio filters.
+const { FFmpeg } = require('@discord-player/ffmpeg');
+const origFFmpegSpawn = FFmpeg.spawn;
+FFmpeg.spawn = function(options = {}) {
+    if (Array.isArray(options.args)) {
+        const args = [...options.args];
+        const ssIdx = args.indexOf('-ss');
+        const iIdx = args.indexOf('-i');
+        if (ssIdx !== -1 && iIdx !== -1 && ssIdx < iIdx) {
+            const ssVal = args[ssIdx + 1];
+            args.splice(ssIdx, 2);
+            const newIIdx = args.indexOf('-i');
+            if (parseFloat(ssVal) > 0) {
+                args.splice(newIIdx + 2, 0, '-ss', ssVal);
+            }
+            options = { ...options, args };
+        }
+    }
+    return origFFmpegSpawn.call(this, options);
+};
+
 const { Client, GatewayIntentBits, Collection, EmbedBuilder, ActivityType } = require('discord.js');
-const { Player } = require('discord-player');
+const { Player, SearchResult } = require('discord-player');
+const { findDuplicateInQueue, filterUniqueTracks } = require('./utils/queueUtils');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -55,6 +78,51 @@ client.player.getQueue = (messageOrGuildId) => {
         ? messageOrGuildId
         : messageOrGuildId?.guild?.id || messageOrGuildId?.guildId;
     return client.player.nodes.get(guildId);
+};
+
+// Wrap client.player.play to prevent duplicate songs/playlists from being added to the queue
+const origPlayerPlay = client.player.play.bind(client.player);
+client.player.play = async (channel, query, options = {}) => {
+    const vc = client.channels.resolve(channel);
+    const searchResult = query instanceof SearchResult ? query : await client.player.search(query, options);
+
+    if (!searchResult.isEmpty() && vc?.guild) {
+        const existingQueue = client.player.nodes.get(vc.guild.id);
+
+        if (searchResult.playlist) {
+            const { uniqueTracks, skippedCount, totalTracks } = filterUniqueTracks(existingQueue, searchResult.tracks);
+            if (uniqueTracks.length === 0) {
+                return {
+                    duplicate: true,
+                    isPlaylist: true,
+                    playlistTitle: searchResult.playlist.title || 'Playlist',
+                    totalTracks,
+                    skippedCount
+                };
+            }
+            searchResult.playlist.tracks = uniqueTracks;
+            searchResult.playlist.skippedDuplicates = skippedCount;
+            uniqueTracks.forEach(t => {
+                t.playlist = searchResult.playlist;
+                t._skippedDuplicates = skippedCount;
+            });
+            searchResult.setTracks(uniqueTracks);
+        } else {
+            const candidate = searchResult.tracks[0];
+            const dup = findDuplicateInQueue(existingQueue, candidate);
+            if (dup) {
+                return {
+                    duplicate: true,
+                    isPlaylist: false,
+                    reason: dup.reason,
+                    position: dup.position,
+                    track: dup.track || candidate
+                };
+            }
+        }
+    }
+
+    return await origPlayerPlay(channel, searchResult, options);
 };
 
 // Player debug logs

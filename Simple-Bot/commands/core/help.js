@@ -37,14 +37,23 @@ module.exports = {
                         inline: false 
                     },
                     {
-                        name: '✨ Interactive Features',
+                        name: '🎛️ Interactive Controls & Queue',
                         value: [
-                            '• **Raw URL Auto-Play**: Drop any YouTube, SoundCloud, or Spotify link into chat while in voice to play immediately without typing `.play`!',
-                            '• **Button Controls**: Interactive buttons under Now Playing (`Pause`, `Skip`, `Loop`, `Shuffle`, `Stop`, `Add Song`, `Queue`, `Previous`, `Clear`).',
-                            '• **➕ Add to Queue Modal**: Click the button under Now Playing to open a popup and queue any track.',
+                            '• **Button Controls**: `Previous`, `Pause`, `Skip`, `Loop`, `Stop`, `Add to Queue`, `Queue`, `Jump`, `Shuffle`, `Clear`.',
+                            '• **🦘 Jump to Song**: Click `🦘 Jump`, use the `.queue` dropdown, or type `.jump <# or name>` to jump without losing earlier tracks.',
+                            '• **⏮️ Previous / Restart**: Click `⏮️ Previous` or type `.back` (`.prev`) for the previous song or to restart.',
+                            '• **➕ Add to Queue Modal**: Click `➕ Add to Queue` to queue any song or URL via popup.'
+                        ].join('\n'),
+                        inline: false
+                    },
+                    {
+                        name: '✨ Smart Music Features',
+                        value: [
+                            '• **Raw URL Auto-Play**: Drop any YouTube, SoundCloud, or Spotify link in chat while in voice to play automatically.',
+                            '• **🛡️ Duplicate Song Guard**: Prevents adding songs or playlist tracks that are already playing or in the queue.',
                             '• **🔁 4-State Loop**: Supports `Song` (🔂), `Queue` (🔁), `Autoplay` (📻), and `Off`.',
-                            '• **📑 YouTube Playlists**: Full support for playlist URLs and searching playlists via `.playlist <name>`.',
-                            '• **🎚️ 23 Audio Filters**: `.filters` to see real-time active filters; `.filter <name>` to toggle (`8D`, `bassboost`, `nightcore`, etc.).'
+                            '• **📑 YouTube Playlists**: Full support for playlist URLs and `.playlist <name>`.',
+                            '• **🎚️ 23 Audio Filters**: `.filters` for live status; `.filter <name>` to toggle (`8D`, `bassboost`, `nightcore`, etc.).'
                         ].join('\n'),
                         inline: false
                     }
@@ -68,9 +77,11 @@ module.exports = {
             'play': `${prefix}play Bohemian Rhapsody\n${prefix}play https://youtu.be/...\nhttps://youtu.be/... (drop raw URL in chat)`,
             'playlist': `${prefix}playlist https://www.youtube.com/playlist?list=PL...\n${prefix}playlist lofi hip hop`,
             'playnext': `${prefix}playnext Shape of You`,
+            'jump': `${prefix}jump (opens interactive dropdown)\n${prefix}jump 5 (jumps to track #5)\n${prefix}jump blinding lights (jumps by song name)`,
+            'back': `${prefix}back\n${prefix}prev`,
             'queue': `${prefix}queue\n${prefix}queue 2`,
             'remove': `${prefix}remove 3`,
-            'skipto': `${prefix}skipto 4`,
+            'skipto': `${prefix}skipto 4\n${prefix}skipto starboy`,
             'loop': `${prefix}loop (cycles mode)\n${prefix}loop song\n${prefix}loop queue\n${prefix}loop autoplay\n${prefix}loop off`,
             'filter': `${prefix}filter 8D\n${prefix}filter bassboost\n${prefix}filter off`,
             'filters': `${prefix}filters`,

@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 const { QueueRepeatMode } = require('discord-player');
+const { createJumpSelectRow } = require('../../utils/playerControls');
 
 module.exports = {
     name: 'queue',
@@ -60,13 +61,17 @@ module.exports = {
                 { name: 'Estimated Duration', value: `${queue.durationFormatted || 'Unknown'}`, inline: true },
                 { name: 'Loop Mode', value: repeatStatus, inline: true }
             )
-            .setFooter({ text: `Page ${page}/${totalPages} | Use "${client.config.app.px}queue <page>" to navigate` })
+            .setFooter({ text: `Page ${page}/${totalPages} | Use "${client.config.prefix}queue <page>" or "${client.config.prefix}jump <# or name>"` })
             .setTimestamp();
 
         if (current.thumbnail) {
             embed.setThumbnail(current.thumbnail);
         }
 
-        return message.channel.send({ embeds: [embed] });
+        const jumpRow = createJumpSelectRow(queue, startIndex, pageSize);
+        return message.channel.send({
+            embeds: [embed],
+            components: jumpRow ? [jumpRow] : []
+        });
     },
 };

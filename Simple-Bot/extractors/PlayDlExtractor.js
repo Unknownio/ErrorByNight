@@ -8,6 +8,8 @@ class PlayDlExtractor extends BaseExtractor {
         return 'com.discord-player.playdlextractor';
     }
 
+    priority = 10;
+
     async validate(query, type) {
         if (typeof query !== 'string') return false;
         const isUrl = /^https?:\/\//i.test(query.trim());
@@ -70,6 +72,8 @@ class PlayDlExtractor extends BaseExtractor {
                                 url: playlistData.url || trimmed,
                                 tracks
                             });
+
+                            tracks.forEach(t => { t.playlist = playlist; });
 
                             console.log(`Successfully loaded YouTube playlist "${playlist.title}" with ${tracks.length} tracks.`);
                             return this.createResponse(playlist, tracks);
@@ -138,6 +142,8 @@ class PlayDlExtractor extends BaseExtractor {
                                     url: playlistData.url || firstPlaylist.url,
                                     tracks
                                 });
+
+                                tracks.forEach(t => { t.playlist = playlist; });
 
                                 return this.createResponse(playlist, tracks);
                             }

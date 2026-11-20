@@ -1,6 +1,6 @@
-const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, EmbedBuilder } = require('discord.js');
+const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, EmbedBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { QueueRepeatMode, QueryType } = require('discord-player');
-const { createPlayerComponents, createNowPlayingEmbed } = require('../utils/playerControls');
+const { createPlayerComponents, createNowPlayingEmbed, createJumpSelectRow } = require('../utils/playerControls');
 
 module.exports = async (client, interaction) => {
     // Check if interaction is in a guild
@@ -44,6 +44,22 @@ module.exports = async (client, interaction) => {
                     searchEngine: QueryType.AUTO,
                 });
 
+                if (playResult?.duplicate) {
+                    if (playResult.isPlaylist) {
+                        return await interaction.editReply({
+                            content: `⚠️ - All **${playResult.totalTracks}** songs from **${playResult.playlistTitle}** are already in the queue!`
+                        });
+                    }
+                    if (playResult.reason === 'playing') {
+                        return await interaction.editReply({
+                            content: `⚠️ - **${playResult.track.title}** is already currently playing!`
+                        });
+                    }
+                    return await interaction.editReply({
+                        content: `⚠️ - **${playResult.track.title}** is already in the queue (Position **#${playResult.position}**)!`
+                    });
+                }
+
                 const addedTrack = playResult?.track || (playResult?.tracks && playResult.tracks[0]);
                 const title = addedTrack?.title || query;
 
@@ -56,6 +72,110 @@ module.exports = async (client, interaction) => {
                     content: `${client.emotes.error} - Failed to add that track (${err?.message || err}).`
                 });
             }
+        } else if (interaction.customId === 'modal_jump_track') {
+            const memberVoice = interaction.member?.voice?.channel;
+            if (!memberVoice) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - You must be in a voice channel to jump to a song!`,
+                    ephemeral: true
+                });
+            }
+
+            const queue = client.player?.nodes?.get(interaction.guild.id);
+            if (!queue || !queue.currentTrack || queue.tracks.size === 0) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - There are no tracks in the queue to jump to!`,
+                    ephemeral: true
+                });
+            }
+
+            const input = interaction.fields.getTextInputValue('jump_target')?.trim();
+            if (!input) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - Please provide a track number or song name!`,
+                    ephemeral: true
+                });
+            }
+
+            const tracks = queue.tracks.toArray();
+            let targetIndex = -1;
+
+            if (/^\d+$/.test(input)) {
+                const num = parseInt(input, 10);
+                if (num < 1 || num > tracks.length) {
+                    return interaction.reply({
+                        content: `${client.emotes.error} - Please specify a track number between **1** and **${tracks.length}**!`,
+                        ephemeral: true
+                    });
+                }
+                targetIndex = num - 1;
+            } else {
+                const lower = input.toLowerCase();
+                targetIndex = tracks.findIndex(
+                    t => t.title?.toLowerCase().includes(lower) || t.author?.toLowerCase().includes(lower)
+                );
+                if (targetIndex === -1) {
+                    return interaction.reply({
+                        content: `${client.emotes.error} - Couldn't find any song matching **"${input}"** in the queue!`,
+                        ephemeral: true
+                    });
+                }
+            }
+
+            const targetTrack = tracks[targetIndex];
+            queue.node.jump(targetTrack);
+
+            return interaction.reply({
+                content: `🦘 - Jumped to **#${targetIndex + 1} — ${targetTrack.title}**!`,
+                ephemeral: true
+            });
+        }
+        return;
+    }
+
+    // Handle Select Menu Interactions (e.g. jumping to a specific song from dropdown)
+    if (interaction.isStringSelectMenu()) {
+        if (interaction.customId === 'player_jump_select') {
+            const memberVoice = interaction.member?.voice?.channel;
+            if (!memberVoice) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - You must be in a voice channel to use these controls!`,
+                    ephemeral: true
+                });
+            }
+
+            const botVoice = interaction.guild.members.me?.voice?.channel;
+            if (botVoice && memberVoice.id !== botVoice.id) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - You must be in the same voice channel (${botVoice.name})!`,
+                    ephemeral: true
+                });
+            }
+
+            const queue = client.player?.nodes?.get(interaction.guild.id);
+            if (!queue || !queue.currentTrack || queue.tracks.size === 0) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - There are no tracks in the queue to jump to!`,
+                    ephemeral: true
+                });
+            }
+
+            const selectedIndex = parseInt(interaction.values[0], 10);
+            const tracks = queue.tracks.toArray();
+            if (isNaN(selectedIndex) || selectedIndex < 0 || selectedIndex >= tracks.length) {
+                return interaction.reply({
+                    content: `${client.emotes.error} - That song is no longer at that position in the queue!`,
+                    ephemeral: true
+                });
+            }
+
+            const targetTrack = tracks[selectedIndex];
+            queue.node.jump(targetTrack);
+
+            return interaction.reply({
+                content: `🦘 - Jumped directly to **#${selectedIndex + 1} — ${targetTrack.title}**!`,
+                ephemeral: true
+            }).catch(() => {});
         }
         return;
     }
@@ -200,22 +320,78 @@ module.exports = async (client, interaction) => {
                         { name: 'Queue Duration', value: `${queue.durationFormatted || 'Unknown'}`, inline: true }
                     );
 
-                await interaction.reply({ embeds: [queueEmbed], ephemeral: true });
+                const jumpRow = createJumpSelectRow(queue, 0, 25);
+                await interaction.reply({
+                    embeds: [queueEmbed],
+                    components: jumpRow ? [jumpRow] : [],
+                    ephemeral: true
+                });
+                break;
+            }
+
+            case 'player_jump': {
+                if (queue.tracks.size === 0) {
+                    return interaction.reply({
+                        content: `${client.emotes.error} - There are no other tracks in the queue to jump to!`,
+                        ephemeral: true
+                    });
+                }
+
+                const jumpSelectRow = createJumpSelectRow(queue, 0, 25);
+                const modalBtnRow = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder()
+                        .setCustomId('player_jump_modal')
+                        .setLabel('Search by # or Song Name')
+                        .setEmoji('🔢')
+                        .setStyle(ButtonStyle.Primary)
+                );
+
+                const components = [];
+                if (jumpSelectRow) components.push(jumpSelectRow);
+                components.push(modalBtnRow);
+
+                await interaction.reply({
+                    content: `🦘 **Jump to Song** — Pick a track from the dropdown below${queue.tracks.size > 25 ? ` (showing first 25 of ${queue.tracks.size})` : ''} or click **Search by # or Song Name**:`,
+                    components,
+                    ephemeral: true
+                });
+                break;
+            }
+
+            case 'player_jump_modal': {
+                const modal = new ModalBuilder()
+                    .setCustomId('modal_jump_track')
+                    .setTitle('Jump to Song in Queue');
+
+                const targetInput = new TextInputBuilder()
+                    .setCustomId('jump_target')
+                    .setLabel(`Track Number (1-${queue.tracks.size}) or Song Name`)
+                    .setStyle(TextInputStyle.Short)
+                    .setPlaceholder('e.g. 5 or Bohemian Rhapsody')
+                    .setRequired(true);
+
+                const modalRow = new ActionRowBuilder().addComponents(targetInput);
+                modal.addComponents(modalRow);
+
+                await interaction.showModal(modal);
                 break;
             }
 
             case 'player_previous': {
-                if (!queue.history.tracks.size) {
-                    return interaction.reply({
-                        content: `${client.emotes.error} - No previous track in history!`,
+                if (queue.history.tracks.size > 0) {
+                    const prevTrack = queue.history.previousTrack;
+                    await queue.history.back();
+                    await interaction.reply({
+                        content: `⏮️ - Playing previous song${prevTrack?.title ? `: **${prevTrack.title}**` : ''}!`,
                         ephemeral: true
-                    });
+                    }).catch(() => {});
+                } else {
+                    await queue.node.seek(0);
+                    await interaction.reply({
+                        content: `⏮️ - No previous track in history — restarted **${queue.currentTrack.title}** from the beginning!`,
+                        ephemeral: true
+                    }).catch(() => {});
                 }
-                await queue.history.back();
-                await interaction.reply({
-                    content: `⏮️ - Playing previous song!`,
-                    ephemeral: true
-                }).catch(() => {});
                 break;
             }
 
