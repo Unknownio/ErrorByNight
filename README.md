@@ -1,13 +1,12 @@
 # ErrorByNight
 
-**ErrorByNight** (by [Unknownio](https://github.com/Unknownio)) is a multi-project repository containing a modern Discord music bot alongside several Windows batch utilities and experimental scripts.
+**ErrorByNight** (by [Unknownio](https://github.com/Unknownio)) is a multi-project repository containing a modern Discord music bot alongside a Windows batch prank utility.
 
 ## Projects Overview
 
 | Project | Platform / Stack | Description |
 | :--- | :--- | :--- |
 | [`Simple-Bot/`](Simple-Bot/) | Node.js / Discord.js v14 | Full-featured Discord music bot with interactive controls, 23 audio filters, YouTube/SoundCloud/Spotify playback, duplicate guard, and optional YouTube upload notifications. |
-| [`Antivirus/`](Antivirus/) | Windows Batch | Early beta batch prototype that checks for a user-entered filename in the current directory and deletes it if found. |
 | [`FakeVirus/`](FakeVirus/) | Windows Batch | Shutdown-prank documentation and a `cancel the operation.bat` helper that aborts a pending Windows shutdown (`shutdown -a`). |
 
 ## Repository Structure
@@ -17,9 +16,6 @@ ErrorByNight/
 ├── .github/
 │   └── workflows/
 │       └── codeql-analysis.yml
-├── Antivirus/
-│   ├── ReadMe.txt
-│   └── antivirus.bat
 ├── FakeVirus/
 │   ├── README.md
 │   └── cancel the operation.bat
@@ -165,20 +161,6 @@ Default prefix is `.` (configurable via `PREFIX`). Below are all 23 commands loa
 `bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`, `lofi`, `mono`, `chorus`, `compressor`, `earrape`
 
 </details>
-
----
-
-## `Antivirus` — Experimental Batch Prototype (Beta)
-
-- **Files:** [`Antivirus/antivirus.bat`](Antivirus/antivirus.bat), [`Antivirus/ReadMe.txt`](Antivirus/ReadMe.txt) (Windows)
-
-An early beta batch script that prompts you to enter a filename and checks whether that file exists in the current working directory (`if EXIST %name%`):
-
-- If found, it prints `WARNING VIRUS DETECTED !` and executes `DEL %name%`.
-- If not found, it prints `System secure !` and exits.
-
-> [!CAUTION]
-> This is an experimental/educational batch prototype, not a real antivirus scanner. Entering the name of any existing file in the current directory will delete that file via `DEL`.
 
 ---
 
